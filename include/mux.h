@@ -21,7 +21,7 @@ SC_MODULE (mux) {
 	// Procedimento para selecionar a porta de entrada.
 	void action();
 
-	// Construtor padrão
+	// Construtor padrão.
 	SC_CTOR(mux) {
 		// O método action será sensível à todas as portas de entrada.
 		SC_METHOD(action);
