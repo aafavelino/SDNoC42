@@ -1,0 +1,18 @@
+tg 1
+0 0 3 3 10 2 18
+
+
+
+
+// Modelo de tráfego
+// 0 0 2 0 23 1 10 
+
+// Mesh padrão:  
+// 	     xs ys xd yd qtd_flits qtd_pcts idleCycles 
+//       xs: X source; 
+// 		 xd: X dest
+//       xs: Y source; 
+// 		 xd: Y dest     
+//		 qtd_flits : Quantos flits haverá dentro de cada pacote
+// 		 qtd_pcts : Quantos pacotes serão enviados por fluxo         
+//       idleCycles: De quanto em quanto tempo é enviado 
