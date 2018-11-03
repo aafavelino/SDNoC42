@@ -1,5 +1,5 @@
 //
-// Created by Adelino and Raul on 02/11/18.
+// Created by Adelino, Raul and Yuri on 02/11/18.
 //
 
 #ifndef _PACOTE_H_
