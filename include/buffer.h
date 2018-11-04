@@ -10,7 +10,7 @@
 #include "systemc.h"
 
 
-SC_MODULE (Buffer)
+SC_MODULE (buffer)
 {
 
 public:
@@ -24,7 +24,7 @@ public:
 	bool isEmpty();
 
 
-	SC_CTOR(Buffer) {
+	SC_CTOR(buffer) {
         SC_METHOD(add);
         	sensitive << data;
 	}
