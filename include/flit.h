@@ -11,7 +11,6 @@ class Flit {
 	
 public:
 	sc_uint <32> data;
-	sc_uint <32> trailer;
 };
 
 #endif

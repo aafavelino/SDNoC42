@@ -32,8 +32,6 @@ public:
 	std::tuple<int, int> destino;
 	int qtd_flits;
 	int idleCycles; 
-	int cont_enviados = 0;
-	int contador_de_ciclos = 0;
 	int qtd_pcts;
 	Flit flit;
 
@@ -47,12 +45,15 @@ public:
 		this->idleCycles = idleCycles;
 
 
-		for (int i = 0; i < qtd_pcts; ++i){
-			for (int j = 0; j < qtd_flits; ++j)
-			{
-				this->flit.trailer = 0;
-				if(i == (qtd_flits-1))
-					this->flit.trailer = 1;
+		for (int i = 0; i < qtd_pcts; ++i) {
+			for (int j = 0; j < qtd_flits; ++j) {
+
+				this->flit.data = 0;
+				// Caso seja o flit trailer, escreve 1;
+				if(i == (qtd_flits-1)) {
+					this->flit.data = 1;
+				}
+
 				fila_flits.push(flit);
 			}
 		}
