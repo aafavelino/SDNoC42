@@ -17,9 +17,10 @@ public:
 	
 	std::queue<sc_uint <32> > data_flit;
 	sc_in<sc_uint <32> > data;
+	sc_out<sc_uint <32> > data_out;
 
 	void add();
-	void remove();
+	sc_uint <32> consome();
 	bool isEmpty();
 
 

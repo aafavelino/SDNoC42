@@ -6,12 +6,18 @@
 
 // Adiciona o flit na fila
 void Buffer::add() {
-	data_flit.push(data.read());
+	if (this->data_flit.empty())
+	{
+		data_flit.push(data.read());
+	}
+	
 }
 
 // Remove o flit na fila
-void Buffer::remove() {
+sc_uint <32> Buffer::consome() {
+	sc_uint <32> data =  data_flit.front();
 	data_flit.pop();
+	return data;
 }
 
 //Se estiver Vazio retorna true, senão retorna false
