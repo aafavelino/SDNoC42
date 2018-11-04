@@ -15,9 +15,6 @@ Existe um arquivo com um exemplo de como compilar tanto no mac quanto no linux. 
  2. Em traffic.txt é definido o padrão de tráfego.
  3. Por fim é só executar o arquivo gerado ao compilar a noc. 
 
-## Transaction-Level Modeling (TLM 2.0)
-
-O modelo Network on chip 42 foi baseado na rede SOCin em uma descrição TLM.
 
 
 ### Projeto de Pesquisa em Redes em chip
