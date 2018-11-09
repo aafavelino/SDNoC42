@@ -14,7 +14,7 @@ SC_MODULE (controle_de_fluxo){
 
 public:
 	sc_in<sc_uint<32> > entrada;
-	sc_oout<sc_uint<32> > saida;
+	sc_out<sc_uint<32> > saida;
 	
 	void action(){
 		saida.write(entrada.read());

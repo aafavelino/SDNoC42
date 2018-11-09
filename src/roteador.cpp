@@ -4,24 +4,24 @@
 
 #include "roteador.h"
 
-void buffer_ack(){
-	if(ack_leste.read()){
+void roteador::buffer_ack(){
+	if(ack_leste->read()){
 		buffer_leste->consome();
 	}
 
-	if(ack_oeste.read()){
+	if(ack_oeste->read()){
 		buffer_oeste->consome();
 	}
 
-	if(ack_norte.read()){
+	if(ack_norte->read()){
 		buffer_norte->consome();
 	}
 
-	if(ack_sul.read()){
+	if(ack_sul->read()){
 		buffer_sul->consome();
 	}
 
-	if(ack_local.read()){
+	if(ack_local->read()){
 		buffer_local->consome();
 	}
 }
