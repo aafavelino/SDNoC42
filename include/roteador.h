@@ -28,6 +28,8 @@ SC_MODULE (roteador){
 
 	sc_signal<sc_uint<32> > bufferL_sig_mux, bufferO_sig_mux, bufferN_sig_mux, bufferS_sig_mux, bufferLoc_sig_mux;
 
+	sc_signal<sc_uint<32> > sinal_mux_out_local, sinal_mux_out_norte, sinal_mux_out_sul, sinal_mux_out_leste, sinal_mux_out_oeste;
+
 	void buffer_ack();
 
 	// Construtor padrão.
@@ -91,8 +93,12 @@ SC_MODULE (roteador){
 		mux_norte->entrada_1(bufferLoc_sig_mux);
 		mux_sul->entrada_1(bufferLoc_sig_mux);
 
+		mux_leste->saida(sinal_mux_out_leste);
+		mux_oeste->saida(sinal_mux_out_oeste);
+		mux_norte->saida(sinal_mux_out_norte);
+		mux_sul->saida(sinal_mux_out_sul);
+		mux_local->saida(sinal_mux_out_local);
 
-		
 
 		SC_METHOD(buffer_ack);
 			sensitive << ack_leste, ack_oeste, ack_norte, ack_sul, ack_local;
