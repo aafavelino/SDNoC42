@@ -21,7 +21,7 @@ Existe um arquivo com um exemplo de como compilar tanto no mac quanto no linux. 
 
 |  Alunos                       | 
 |-------------------------------|
-| Adelino Afonso				|
+| Adelino Avelino			|
 | Raul Silveira 				|
 | Yuri Reinaldo 				|
 
