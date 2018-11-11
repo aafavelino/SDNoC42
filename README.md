@@ -19,7 +19,7 @@ Existe um arquivo com um exemplo de como compilar tanto no mac quanto no linux. 
 
 ### Projeto de Pesquisa em Redes em chip
 
-|  Alunos                       | 						  |
+|  Alunos                       | 		Email			  |
 |-------------------------------|-------------------------|
 | Adelino Avelino			    | aafavelino@icloud.com   |
 | Raul Silveira 				| raul95@gmail.com        |
@@ -27,7 +27,7 @@ Existe um arquivo com um exemplo de como compilar tanto no mac quanto no linux. 
 
 
 
-|  Professores                  |             						|
+|  Professores                  |             	Email				|
 |-------------------------------|-----------------------------------|
 |  Marcio Eduardo Kreutz		|  kreutz@dimap.ufrn.br             |
 |  Silvia Maria Diniz M. Maia	|  silvia@dimap.ufrn.br 			|
