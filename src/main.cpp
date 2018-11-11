@@ -16,8 +16,6 @@
 
 using namespace std;
 
-
-
 int sc_main (int argc, char* argv[]) {
 	// TESTE FECHAMENTO CIRCUITO
 	sd *software_defined = new sd("SD");
