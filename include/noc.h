@@ -1,5 +1,5 @@
 //
-// Created by Adelino, Raul and Yuri on 02/11/18.
+// Created by Adelino, Raul and Yuri on 08/11/18.
 //
 
 #ifndef _NOC_H_
@@ -67,7 +67,7 @@ SC_MODULE (noc) {
 			}
 		}
 
-		// Ligando sinais entre os roteadores	
+		// Bind sinais entre os roteadores	
 		for (int x = 0; x < ALTURA_REDE; ++x)
 		{
 			for (int y = 0; y < LARGURA_REDE; ++y)
