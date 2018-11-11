@@ -11,6 +11,9 @@
 
 
 SC_MODULE (sd) {
+	// Tabela de multiplexação
+	sc_uint<2> tabela_mux[5][5] = {{-1,1,2,3,0}, {1,-1,2,3,0}, {1,2,-1,3,0}, {1,2,3,-1,0}, {0,1,2,3,-1}};
+
 
 	// Instância da NoC para simulação
 	noc *noc42;
@@ -73,10 +76,7 @@ SC_MODULE (sd) {
 				set_enables[x][y][LESTE](sinais_enables[x][y][LESTE]);
 				set_enables[x][y][OESTE](sinais_enables[x][y][OESTE]);
 				set_enables[x][y][LOCAL](sinais_enables[x][y][LOCAL]);				
-
-
 			}
-
 		}
 
 

@@ -23,5 +23,3 @@ void mux::action() {
 		}
 	}
 }
-
-switch

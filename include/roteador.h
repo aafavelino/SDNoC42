@@ -33,7 +33,8 @@ SC_MODULE (roteador){
 	void buffer_ack();
 
 	// Construtor padrão.
-	SC_CTOR(roteador) {
+	SC_CTOR(roteador)
+	{
 		buffer_leste = new buffer("buffer_leste");
 		buffer_oeste = new buffer("buffer_oeste");
 		buffer_norte = new buffer("buffer_norte");

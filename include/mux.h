@@ -22,7 +22,15 @@ SC_MODULE (mux) {
 	void action();
 
 	// Construtor padrão.
-	SC_CTOR(mux) {
+	SC_CTOR(mux): 
+		entrada_1("entrada_1"), 
+		entrada_2("entrada_2"), 
+		entrada_3("entrada_3"), 
+		entrada_4("entrada_4"), 
+		seletor("seletor"),
+		enable("enable"),
+		saida("saida")
+	{
 		// O método action será sensível à todas as portas de entrada.
 		SC_METHOD(action);
 			sensitive << entrada_1, entrada_2, entrada_3, entrada_4, seletor, enable;
