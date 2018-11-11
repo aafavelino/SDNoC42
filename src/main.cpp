@@ -22,13 +22,9 @@ int sc_main (int argc, char* argv[]) {
 	// TESTE FECHAMENTO CIRCUITO
 	sd *software_defined = new sd("SD");
 
-	
-
 	software_defined->solicita_rota();
 
 	software_defined->cores[0][0].write(6);
-
-	
 
 	sc_start();
 
