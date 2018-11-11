@@ -22,10 +22,20 @@ int sc_main (int argc, char* argv[]) {
 	// TESTE FECHAMENTO CIRCUITO
 	sd *software_defined = new sd("SD");
 
+	
+
 	software_defined->solicita_rota();
+
+	software_defined->cores[0][0].write(6);
+
+	
 
 	sc_start();
 
+	cout << software_defined->noc42->network[0][0]->buffer_local->data.read() << endl;
+	cout << software_defined->noc42->network[0][0]->mux_leste->entrada_1.read() << endl;
+	cout << software_defined->noc42->network[0][1]->buffer_oeste->data.read() << endl;
+	cout << software_defined->noc42->network[0][1]->mux_local->saida << endl;
 
   	return 0;
 }

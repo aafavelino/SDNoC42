@@ -15,6 +15,10 @@ SC_MODULE (sd) {
 	sc_uint<2> tabela_mux[5][5] = {{-1,1,2,3,0}, {1,-1,2,3,0}, {1,2,-1,3,0}, {1,2,3,-1,0}, {0,1,2,3,-1}};
 
 
+	// Cores de cada roteador
+	sc_out<sc_uint <32> > cores[ALTURA_REDE][LARGURA_REDE];
+
+
 	// Instância da NoC para simulação
 	noc *noc42;
 
@@ -50,6 +54,9 @@ SC_MODULE (sd) {
 		// Bind sinais entre os mux dos roteadores	
 		for (int x = 0; x < ALTURA_REDE; ++x){
 			for (int y = 0; y < LARGURA_REDE; ++y){
+				// Bind dos cores
+				cores[x][y](noc42->canais_locais[x][y]);
+
 				// Bind com seletores (portas de entrada) de cada mux de cada roteador
 				noc42->network[x][y]->mux_norte->seletor(sinais_seletores[x][y][NORTE]);
 				noc42->network[x][y]->mux_sul->seletor(sinais_seletores[x][y][SUL]);
