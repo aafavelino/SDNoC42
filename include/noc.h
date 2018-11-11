@@ -19,8 +19,8 @@ SC_MODULE (noc) {
 	int contador_nomes = 0;
 	int contador_canais_TERRA = 0;
 
-	// sc_signal< sc_uint <32> > canais_de_comunicacao[1445];
 	sc_signal< sc_uint <32> > canais_de_comunicacao_TERRA[((ALTURA_REDE+LARGURA_REDE)*2)];
+	sc_signal< sc_uint <32> > canais_locais[ALTURA_REDE][LARGURA_REDE];
 
 	SC_CTOR(noc) {
 		const char* roteadores_nomes[]={
@@ -61,7 +61,6 @@ SC_MODULE (noc) {
 		
 		for (int i = 0; i < ALTURA_REDE; ++i){
 			for (int j = 0; j < LARGURA_REDE; ++j){
-				cout << i << " " << j << " "<< roteadores_nomes[contador_nomes] << endl;
 				network[i][j] = new roteador(roteadores_nomes[contador_nomes]);
 				contador_nomes++;
 			}
@@ -72,6 +71,8 @@ SC_MODULE (noc) {
 		{
 			for (int y = 0; y < LARGURA_REDE; ++y)
 			{
+				network[x][y]->buffer_local->data(canais_locais[x][y]);
+
 				if (y != LARGURA_REDE-1)
 				{
 					network[x][y]->buffer_leste->data(network[x][y+1]->sinal_mux_out_oeste);

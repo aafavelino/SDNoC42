@@ -5,8 +5,7 @@
 #include "mux.h"
 
 void mux::action() {
-	if (enable.read() == 1)
-	{
+	if (enable.read() == 1){
 		switch (seletor.read()) {
 			case 0:
 				saida.write(entrada_1.read());

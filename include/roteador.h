@@ -33,8 +33,7 @@ SC_MODULE (roteador){
 	void buffer_ack();
 
 	// Construtor padrão.
-	SC_CTOR(roteador)
-	{
+	SC_CTOR(roteador){
 		buffer_leste = new buffer("buffer_leste");
 		buffer_oeste = new buffer("buffer_oeste");
 		buffer_norte = new buffer("buffer_norte");
@@ -102,7 +101,11 @@ SC_MODULE (roteador){
 
 
 		SC_METHOD(buffer_ack);
-			sensitive << ack_leste, ack_oeste, ack_norte, ack_sul, ack_local;
+			sensitive << ack_leste;
+			sensitive << ack_oeste;
+			sensitive << ack_norte;
+			sensitive << ack_sul;
+			sensitive << ack_local;
 	}	
 };
 #endif

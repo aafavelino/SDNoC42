@@ -21,7 +21,8 @@ public:
 	void add();
 	void consome();
 
-	SC_CTOR(buffer) {
+	SC_CTOR(buffer):
+		data("data"){
         SC_METHOD(add);
         	sensitive << data;
 	}
