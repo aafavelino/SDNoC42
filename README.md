@@ -19,11 +19,11 @@ Existe um arquivo com um exemplo de como compilar tanto no mac quanto no linux. 
 
 ### Projeto de Pesquisa em Redes em chip
 
-|  Alunos                       | 
-|-------------------------------|
-| Adelino Avelino			|
-| Raul Silveira 				|
-| Yuri Reinaldo 				|
+|  Alunos                       | 						  |
+|-------------------------------|-------------------------|
+| Adelino Avelino			    | aafavelino@icloud.com   |
+| Raul Silveira 				| raul95@gmail.com        |
+| Yuri Reinaldo 				| yuri.wrlk@gmail.com     |
 
 
 
