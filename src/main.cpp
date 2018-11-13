@@ -23,6 +23,7 @@ int sc_main (int argc, char* argv[]) {
 	software_defined->solicita_rota();
 
 	software_defined->cores[0][0].write(6);
+	software_defined->cores[0][1].write(8);
 
 	sc_start();
 
@@ -30,6 +31,12 @@ int sc_main (int argc, char* argv[]) {
 	cout << software_defined->noc42->network[0][0]->mux_leste->entrada_1.read() << endl;
 	cout << software_defined->noc42->network[0][1]->buffer_oeste->data.read() << endl;
 	cout << software_defined->noc42->network[0][1]->mux_local->saida << endl;
+
+	cout << software_defined->noc42->network[0][1]->buffer_local->data.read() << endl;
+	cout << software_defined->noc42->network[0][1]->mux_oeste->entrada_1.read() << endl;
+	cout << software_defined->noc42->network[0][0]->buffer_leste->data.read() << endl;
+	cout << software_defined->noc42->network[1][0]->buffer_norte->data.read() << endl;
+	cout << software_defined->noc42->network[1][0]->mux_local->saida << endl;
 
   	return 0;
 }
