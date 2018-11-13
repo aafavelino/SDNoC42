@@ -11,7 +11,6 @@
 #include <stdlib.h>  
 #include <time.h>   
 #include <systemc.h>
-// #include "noc.h"
 #include "sd.h"
 
 using namespace std;
@@ -26,12 +25,18 @@ int sc_main (int argc, char* argv[]) {
 	fscanf(traffic,"tg %i",&size_pct);
 	padrao_tfg = (int**)malloc(size_pct * sizeof(int*));
 
+	/**
+	 * Atribuindo os fluxos de tráfego ao padrão_tfg onde essa matriz será utilizada para 
+	 * construir os pacotes da simulação.
+	 */
 	for (int i = 0; i < size_pct; i++) {
     	padrao_tfg[i] = (int*) malloc(7 * sizeof(int));
-    	fscanf(traffic,"%i %i %i %i %i %i %i", &padrao_tfg[i][0], &padrao_tfg[i][1], &padrao_tfg[i][2], &padrao_tfg[i][3], &padrao_tfg[i][4], &padrao_tfg[i][5], &padrao_tfg[i][6]);
+    	fscanf(traffic,"%i %i %i %i %i %i %i", &padrao_tfg[i][0], &padrao_tfg[i][1], &padrao_tfg[i][2], &padrao_tfg[i][3]
+    	,&padrao_tfg[i][4], &padrao_tfg[i][5], &padrao_tfg[i][6]);
    	}
 
    	fclose(traffic);
+
     
 
   	return 0;
