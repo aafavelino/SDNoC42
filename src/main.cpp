@@ -1,5 +1,5 @@
 //
-// Created by Adelino, Raul and Yuri on 02/11/18.
+// Created by Adelino, Raul and Yuri on 13/11/18.
 //
 
 #include <iostream>
@@ -17,26 +17,22 @@
 using namespace std;
 
 int sc_main (int argc, char* argv[]) {
-	// TESTE FECHAMENTO CIRCUITO
-	sd *software_defined = new sd("SD");
+	// Leitura do Arquivo de tráfego
+	FILE *traffic;
+	int **padrao_tfg;
+	int size_pct = 0;
 
-	software_defined->solicita_rota();
+	traffic = fopen("traffic.txt","r");
+	fscanf(traffic,"tg %i",&size_pct);
+	padrao_tfg = (int**)malloc(size_pct * sizeof(int*));
 
-	software_defined->cores[0][0].write(6);
-	software_defined->cores[0][1].write(8);
+	for (int i = 0; i < size_pct; i++) {
+    	padrao_tfg[i] = (int*) malloc(7 * sizeof(int));
+    	fscanf(traffic,"%i %i %i %i %i %i %i", &padrao_tfg[i][0], &padrao_tfg[i][1], &padrao_tfg[i][2], &padrao_tfg[i][3], &padrao_tfg[i][4], &padrao_tfg[i][5], &padrao_tfg[i][6]);
+   	}
 
-	sc_start();
-
-	cout << software_defined->noc42->network[0][0]->buffer_local->data.read() << endl;
-	cout << software_defined->noc42->network[0][0]->mux_leste->entrada_1.read() << endl;
-	cout << software_defined->noc42->network[0][1]->buffer_oeste->data.read() << endl;
-	cout << software_defined->noc42->network[0][1]->mux_local->saida << endl;
-
-	cout << software_defined->noc42->network[0][1]->buffer_local->data.read() << endl;
-	cout << software_defined->noc42->network[0][1]->mux_oeste->entrada_1.read() << endl;
-	cout << software_defined->noc42->network[0][0]->buffer_leste->data.read() << endl;
-	cout << software_defined->noc42->network[1][0]->buffer_norte->data.read() << endl;
-	cout << software_defined->noc42->network[1][0]->mux_local->saida << endl;
+   	fclose(traffic);
+    
 
   	return 0;
 }
