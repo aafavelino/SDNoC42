@@ -8,7 +8,7 @@
 #include <systemc.h>
 #include "flit.h"
 
-class Pacote {
+class pacote {
 	
 public:
 
@@ -36,7 +36,7 @@ public:
 	Flit flit;
 
 
-	Pacote(int xs, int ys, int xd, int yd, int qtd_pcts, int qtd_flits, int idleCycles) {
+	pacote(int xs, int ys, int xd, int yd, int qtd_pcts, int qtd_flits, int idleCycles) {
 		
 		this->qtd_pcts =  qtd_pcts;
 		this->origem = std::make_tuple (xs,ys);

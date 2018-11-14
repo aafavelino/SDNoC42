@@ -22,3 +22,7 @@ void sd::solicita_rota() {
 	set_seletor[1][0][LOCAL].write(tabela_mux[LOCAL][NORTE]);
 
 }
+
+void sd::injeta_pacote() {
+	
+}
