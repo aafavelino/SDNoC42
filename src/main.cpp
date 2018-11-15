@@ -47,16 +47,15 @@ int sc_main (int argc, char* argv[]) {
 
  	
  	std::queue<bool> fila_aux;
-
     int x_ant = padrao_tfg[0][0];
     int y_ant = padrao_tfg[0][1];
     int contador = 0;
     int posicao = 0;
-    std::deque<pacote> auxiliar;
-    auxiliar.push_back(pacote(padrao_tfg[0][0],padrao_tfg[0][1], padrao_tfg[0][2], padrao_tfg[0][3],  padrao_tfg[0][4],  padrao_tfg[0][5],  padrao_tfg[0][6]));
-    software_defined->deque_pacotes.push_back(auxiliar);
+    std::deque<pacote> deque_auxiliar;
+    deque_auxiliar.push_back(pacote(padrao_tfg[0][0],padrao_tfg[0][1], padrao_tfg[0][2], padrao_tfg[0][3],  padrao_tfg[0][4],  padrao_tfg[0][5],  padrao_tfg[0][6]));
+    software_defined->deque_pacotes.push_back(deque_auxiliar);
 
-    auxiliar.pop_front();
+    deque_auxiliar.pop_front();
 
     
   	for (int i = 1; i < size_pct; ++i){
@@ -64,11 +63,10 @@ int sc_main (int argc, char* argv[]) {
   			contador++;
   			x_ant = padrao_tfg[i][0];
     		y_ant = padrao_tfg[i][1];
-    		// cout << contador << "x "<< padrao_tfg[i][0] << " y "<< padrao_tfg[i][1] << endl;
-    		auxiliar.push_back(pacote(padrao_tfg[i][0],padrao_tfg[i][1], padrao_tfg[i][2], padrao_tfg[i][3],  padrao_tfg[i][4],  padrao_tfg[i][5],  padrao_tfg[i][6]));
-    		software_defined->deque_pacotes.push_back(auxiliar);
+    		deque_auxiliar.push_back(pacote(padrao_tfg[i][0],padrao_tfg[i][1], padrao_tfg[i][2], padrao_tfg[i][3],  padrao_tfg[i][4],  padrao_tfg[i][5],  padrao_tfg[i][6]));
+    		software_defined->deque_pacotes.push_back(deque_auxiliar);
 
-    		auxiliar.pop_front();
+    		deque_auxiliar.pop_front();
     		posicao++;
   		} else {
   			contador++;
@@ -77,15 +75,10 @@ int sc_main (int argc, char* argv[]) {
   		}
   	}
 
-    
-    // for (int i = 0; i < software_defined->deque_pacotes.size(); ++i)
-    // {
-    // 	cout << software_defined->deque_pacotes[i].front().qtd_pcts << endl;
-    // 	software_defined->deque_pacotes[i].pop_front();
-    // 	software_defined->deque_pacotes[i].pop_front();
-    // 	cout << software_defined->deque_pacotes[i].front().qtd_pcts << endl<< endl;
-    // }
-  	// cout << software_defined->deque_pacotes.size() << endl;
+  	
+
+  	// Roda a simulação até encontrar um sc_stop();
+  	sc_start(); 
 
   	return 0;
 }

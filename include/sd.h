@@ -17,7 +17,9 @@ SC_MODULE (sd) {
  	sc_in<bool> Clk;
 
 	// Objeto do tipo vector de deques de pacote que fará as delegações de caminhos entre os cores
-	std::vector<std::deque<pacote> > deque_pacotes;  	
+	std::vector<std::deque<pacote> > deque_pacotes;  
+
+	std::queue<int> solicitacoes_de_rota;
 
 	// Tabela de multiplexação
 	sc_uint<2> tabela_mux[5][5] = {{-1,1,2,3,0}, {1,-1,2,3,0}, {1,2,-1,3,0}, {1,2,3,-1,0}, {0,1,2,3,-1}};
@@ -94,8 +96,13 @@ SC_MODULE (sd) {
 			}
 		}
 
-		SC_METHOD(injeta_pacote);
 		SC_METHOD(solicita_rota);
+			sensitive << Clk;
+
+		// Verificar se esse método é sensitivo ao clock também..
+		SC_METHOD(injeta_pacote);
+			sensitive << Clk;
+		
 	}
 };
 #endif

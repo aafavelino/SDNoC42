@@ -34,6 +34,9 @@ public:
 	int idleCycles; 
 	int qtd_pcts;
 	Flit flit;
+	bool possui_rota = false;
+
+	int contador_idleCycles = 0;
 
 
 	pacote(int xs, int ys, int xd, int yd, int qtd_pcts, int qtd_flits, int idleCycles) {
