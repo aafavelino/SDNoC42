@@ -80,10 +80,21 @@ int sc_main (int argc, char* argv[]) {
 	// software_defined->set_enables[0][1][LOCAL].write(1);
 	// software_defined->set_seletor[0][1][LOCAL].write(software_defined->tabela_mux[LOCAL][OESTE]);
 
+	// software_defined->set_seletor[0][1][OESTE].write(software_defined->tabela_mux[OESTE][LOCAL]);
+	// software_defined->set_enables[0][1][OESTE].write(1);
 
-	// software_defined->cores[0][0].write(5);
+	// // software_defined->set_enables[0][0][LESTE].write(1);
+	// // software_defined->set_seletor[0][0][LESTE].write(software_defined->tabela_mux[SUL][LESTE]);
 
+	// software_defined->set_enables[0][0][SUL].write(1);
+	// software_defined->set_seletor[0][0][SUL].write(software_defined->tabela_mux[SUL][LESTE]);
+
+	// software_defined->set_enables[1][0][LOCAL].write(1);
+	// software_defined->set_seletor[1][0][LOCAL].write(software_defined->tabela_mux[LOCAL][NORTE]);
 	
+
+	// software_defined->cores[0][0].write(6);
+	// software_defined->cores[0][1].write(5);
 
 
 
@@ -91,6 +102,7 @@ int sc_main (int argc, char* argv[]) {
   	sc_start(); 
 
   	// cout << software_defined->noc42->network[0][1]->mux_local->saida << endl;
+  	// cout << software_defined->noc42->network[1][0]->mux_local->saida << endl;
   	// cout << software_defined->noc42->network[0][1]->mux_oeste->entrada_4.read() << endl;
 
   	return 0;
