@@ -14,7 +14,7 @@
 SC_MODULE (sd) {
 
 	// Clock
- 	sc_in<bool> Clk;
+ 	sc_in_clk Clk;
 
 
 	// Objeto do tipo vector de deques de pacote que fará as delegações de caminhos entre os cores
@@ -98,11 +98,11 @@ SC_MODULE (sd) {
 		}
 
 		SC_METHOD(solicita_rota);
-			sensitive << Clk;
+			sensitive << Clk.pos();
 
 		// Verificar se esse método é sensitivo ao clock também..
 		SC_METHOD(injeta_pacote);
-			sensitive << Clk;
+			sensitive << Clk.pos();
 		
 	}
 };

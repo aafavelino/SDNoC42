@@ -3,17 +3,21 @@
 //
 #include "sd.h"
 
-sc_uint<32> b = 30;
 
 void sd::injeta_pacote() {
+
+	cout<< sc_time_stamp()<<endl;
+
 	// cout << "true "<< deque_pacotes[0].front().fila_flits.size() << endl;
 	for (int i = 0; i < deque_pacotes.size(); ++i) {
+		deque_pacotes[i].front().contador_idleCycles++;
 		/** Se o pacote não está vazio e não possuir ainda uma rota
 		 *  então o mesmo irá solicitar ao mestre uma rota;
 		 */
-		if (!deque_pacotes[i].empty() and (deque_pacotes[i].front().possui_rota == false) and (deque_pacotes[i].front().solicitou_rota == false)) {
+		if (!deque_pacotes[i].empty() and (deque_pacotes[i].front().possui_rota == false) and (deque_pacotes[i].front().solicitou_rota == false) and (deque_pacotes[i].front().contador_idleCycles >= deque_pacotes[i].front().idleCycles)) {
 			deque_pacotes[i].front().solicitou_rota = true;
 			solicitacoes_de_rota.push(i);
+			deque_pacotes[i].front().contador_idleCycles = 0;
 		} else if(!deque_pacotes[i].empty() and (deque_pacotes[i].front().possui_rota == true)) {
 			// Caso seja o último flit deve-se tirar a flag que diz que possui uma rota
 
@@ -31,11 +35,14 @@ void sd::injeta_pacote() {
 			}
 		}
 	}
-	cout << noc42->network[0][1]->mux_local->saida<<" " << noc42->network[1][0]->mux_local->saida << " "<<noc42->network[2][1]->mux_local->saida<< " "<<noc42->network[0][0]->mux_local->saida << endl;
-	//  TODO: Fazer o sc_stop após o ultimo flit chegar no ultimo core
+	// cout << noc42->network[0][1]->mux_local->saida<<" " << noc42->network[1][0]->mux_local->saida << " "<<noc42->network[2][1]->mux_local->saida<< " "<<noc42->network[0][0]->mux_local->saida << endl;
+	
 }
 
 void sd::solicita_rota() {
+
+	next_trigger();
+	cout<< sc_time_stamp()<<endl;
 
   	
 	if (!solicitacoes_de_rota.empty())
