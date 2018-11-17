@@ -35,11 +35,12 @@ public:
 	int qtd_pcts;
 	Flit flit;
 	bool possui_rota = false;
+	bool solicitou_rota = false;
 
 	int contador_idleCycles = 0;
 
 
-	pacote(int xs, int ys, int xd, int yd, int qtd_pcts, int qtd_flits, int idleCycles) {
+	pacote(int xs, int ys, int xd, int yd, int qtd_flits, int qtd_pcts, int idleCycles) {
 		
 		this->qtd_pcts =  qtd_pcts;
 		this->origem = std::make_tuple (xs,ys);
@@ -51,12 +52,13 @@ public:
 		for (int i = 0; i < qtd_pcts; ++i) {
 			for (int j = 0; j < qtd_flits; ++j) {
 
-				this->flit.data = 0;
-				// Caso seja o flit trailer, escreve 1;
-				if(i == (qtd_flits-1)) {
-					this->flit.data = 1;
+				this->flit.data = j;
+				// Caso seja o flit trailer, escreve 0;
+				if(j == (qtd_flits-1)) {
+					this->flit.data = 30;
 				}
 
+				// cout << flit.data << endl;
 				fila_flits.push(flit);
 			}
 		}

@@ -7,7 +7,7 @@
 void mux::action() {
 	
 	if (enable.read() == 1){
-		cout << "MUX" << endl;
+		// cout << "MUX" << endl;
 		switch (seletor.read()) {
 			case 0:
 				saida.write(entrada_1.read());

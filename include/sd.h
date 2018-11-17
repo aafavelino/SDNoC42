@@ -16,6 +16,7 @@ SC_MODULE (sd) {
 	// Clock
  	sc_in<bool> Clk;
 
+
 	// Objeto do tipo vector de deques de pacote que fará as delegações de caminhos entre os cores
 	std::vector<std::deque<pacote> > deque_pacotes;  
 

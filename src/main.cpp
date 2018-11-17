@@ -75,10 +75,23 @@ int sc_main (int argc, char* argv[]) {
   		}
   	}
 
-  	
+	// software_defined->set_seletor[0][0][LESTE].write(software_defined->tabela_mux[LESTE][LOCAL]);
+	// software_defined->set_enables[0][0][LESTE].write(1);
+	// software_defined->set_enables[0][1][LOCAL].write(1);
+	// software_defined->set_seletor[0][1][LOCAL].write(software_defined->tabela_mux[LOCAL][OESTE]);
+
+
+	// software_defined->cores[0][0].write(5);
+
+	
+
+
 
   	// Roda a simulação até encontrar um sc_stop();
   	sc_start(); 
+
+  	// cout << software_defined->noc42->network[0][1]->mux_local->saida << endl;
+  	// cout << software_defined->noc42->network[0][1]->mux_oeste->entrada_4.read() << endl;
 
   	return 0;
 }
