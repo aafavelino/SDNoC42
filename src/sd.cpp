@@ -5,10 +5,8 @@
 
 
 void sd::injeta_pacote() {
+	clock++;
 
-	cout<< sc_time_stamp()<<endl;
-
-	// cout << "true "<< deque_pacotes[0].front().fila_flits.size() << endl;
 	for (int i = 0; i < deque_pacotes.size(); ++i) {
 		deque_pacotes[i].front().contador_idleCycles++;
 		/** Se o pacote não está vazio e não possuir ainda uma rota
@@ -20,8 +18,6 @@ void sd::injeta_pacote() {
 			deque_pacotes[i].front().contador_idleCycles = 0;
 		} else if(!deque_pacotes[i].empty() and (deque_pacotes[i].front().possui_rota == true)) {
 			// Caso seja o último flit deve-se tirar a flag que diz que possui uma rota
-
-
 			if (deque_pacotes[i].front().fila_flits.front().data == 30)
 			{
 				deque_pacotes[i].front().possui_rota = false;
@@ -40,9 +36,7 @@ void sd::injeta_pacote() {
 }
 
 void sd::solicita_rota() {
-
-	next_trigger();
-	cout<< sc_time_stamp()<<endl;
+	// cout<< sc_time_stamp()<<endl;
 
   	
 	if (!solicitacoes_de_rota.empty())

@@ -15,6 +15,7 @@ SC_MODULE (sd) {
 
 	// Clock
  	sc_in_clk Clk;
+ 	unsigned long long int clock;	
 
 
 	// Objeto do tipo vector de deques de pacote que fará as delegações de caminhos entre os cores
