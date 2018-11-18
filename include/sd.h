@@ -26,6 +26,10 @@ SC_MODULE (sd) {
 	// Tabela de multiplexação
 	sc_uint<2> tabela_mux[5][5] = {{-1,1,2,3,0}, {1,-1,2,3,0}, {1,2,-1,3,0}, {1,2,3,-1,0}, {0,1,2,3,-1}};
 
+	// Matriz para ser consultada de acordo com os algoritmos de rotamento
+
+	int grafo_de_rotas[(ALTURA_REDE*LARGURA_REDE)][(ALTURA_REDE*LARGURA_REDE)];
+
 
 	// Cores de cada roteador
 	sc_out<sc_uint <32> > cores[ALTURA_REDE][LARGURA_REDE];
@@ -62,6 +66,39 @@ SC_MODULE (sd) {
 
 	SC_CTOR(sd) {
 		noc42 = new noc("noc_42");
+
+		// Preenchimento do Grafo da Aplicação
+		for (int i = 0; i < (ALTURA_REDE*LARGURA_REDE); ++i) {
+			for (int j = i; j < (ALTURA_REDE*LARGURA_REDE); ++j) {
+				grafo_de_rotas[i][j] = 0;
+			}
+		}
+
+		for (int i = 0; i < (ALTURA_REDE*LARGURA_REDE); ++i) {
+			for (int j = i; j < (ALTURA_REDE*LARGURA_REDE); ++j) {
+				if(i == j){
+					grafo_de_rotas[i][j] = -1;
+				}else{
+
+					if((i%ALTURA_REDE) < (ALTURA_REDE - 1)){
+						if(j == (i + 1)){
+							grafo_de_rotas[i][j] = 1;
+							grafo_de_rotas[j][i] = 1;
+						}
+					}
+
+					if(j == (i + 1)){
+						if((j + ALTURA_REDE - 1) < (ALTURA_REDE * LARGURA_REDE)){
+							grafo_de_rotas[i][(j + ALTURA_REDE - 1)] = 1;
+							grafo_de_rotas[(j + ALTURA_REDE - 1)][i] = 1;
+						}
+					}
+				}
+			}
+		}
+
+
+
 
 		// Bind sinais entre os mux dos roteadores	
 		for (int x = 0; x < ALTURA_REDE; ++x){

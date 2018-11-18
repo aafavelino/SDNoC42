@@ -84,7 +84,6 @@ void sd::solicita_rota() {
 			break;
 		}
 	}
-
-
-
 }
+
+
