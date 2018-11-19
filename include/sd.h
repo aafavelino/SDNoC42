@@ -13,6 +13,9 @@
 
 SC_MODULE (sd) {
 
+
+	std::vector<vector<int> > rotas;
+
 	// Clock
  	sc_in_clk Clk;
  	unsigned long long int clock;	
@@ -62,6 +65,9 @@ SC_MODULE (sd) {
 	 * Este método gera os caminhos solicitados e faz os chaveamentos necessários
 	 */
 	void solicita_rota();
+
+
+	bool roteamento_xy(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante);
 
 
 	SC_CTOR(sd) {

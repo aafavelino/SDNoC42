@@ -135,3 +135,62 @@ int sc_main (int argc, char* argv[]) {
 
   	return 0;
 }
+
+
+
+
+
+
+
+
+
+void sd::solicita_rota() {
+  // cout<< sc_time_stamp()<<endl;
+
+    
+  if (!solicitacoes_de_rota.empty())
+  {
+    switch(solicitacoes_de_rota.front()) {
+      case 0:
+        deque_pacotes[0].front().possui_rota = true;  
+        set_seletor[0][0][LESTE].write(tabela_mux[LESTE][LOCAL]);
+        set_enables[0][0][LESTE].write(1);
+        set_enables[0][1][LOCAL].write(1);
+        set_seletor[0][1][LOCAL].write(tabela_mux[LOCAL][OESTE]);
+        solicitacoes_de_rota.pop();
+      break;
+      case 1:
+        deque_pacotes[1].front().possui_rota = true;
+        set_seletor[0][1][OESTE].write(tabela_mux[OESTE][LOCAL]);
+        set_enables[0][1][OESTE].write(1);
+        set_enables[0][0][SUL].write(1);
+        set_seletor[0][0][SUL].write(tabela_mux[SUL][LESTE]);
+        set_enables[1][0][LOCAL].write(1);
+        set_seletor[1][0][LOCAL].write(tabela_mux[LOCAL][NORTE]);
+        solicitacoes_de_rota.pop();
+      break;
+      case 2:
+        deque_pacotes[2].front().possui_rota = true;
+        set_seletor[2][0][LESTE].write(tabela_mux[LESTE][LOCAL]);
+        set_enables[2][0][LESTE].write(1);
+        set_enables[2][1][LOCAL].write(1);
+        set_seletor[2][1][LOCAL].write(tabela_mux[LOCAL][OESTE]);
+        solicitacoes_de_rota.pop();
+      break;
+      case 3:
+        deque_pacotes[3].front().possui_rota = true;
+        set_seletor[2][2][OESTE].write(tabela_mux[OESTE][LOCAL]);
+        set_enables[2][2][OESTE].write(1);
+        set_enables[2][1][OESTE].write(1);
+        set_seletor[2][1][OESTE].write(tabela_mux[OESTE][LESTE]);
+        set_enables[2][0][NORTE].write(1);
+        set_seletor[2][0][NORTE].write(tabela_mux[NORTE][LESTE]);   
+        set_enables[1][0][NORTE].write(1);
+        set_seletor[1][0][NORTE].write(tabela_mux[NORTE][SUL]); 
+        set_enables[0][0][LOCAL].write(1);
+        set_seletor[0][0][LOCAL].write(tabela_mux[LOCAL][SUL]);                 
+        solicitacoes_de_rota.pop();
+      break;
+    }
+  }
+}

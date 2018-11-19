@@ -52,7 +52,7 @@ public:
 		for (int i = 0; i < qtd_pcts; ++i) {
 			for (int j = 0; j < qtd_flits; ++j) {
 
-				this->flit.data = j;
+				this->flit.data = j + 1;
 				// Caso seja o flit trailer, escreve 0;
 				if(j == (qtd_flits-1)) {
 					this->flit.data = 30;
