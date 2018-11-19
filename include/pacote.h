@@ -59,8 +59,6 @@ public:
 				if(j == (qtd_flits-1)) {
 					this->flit.data = TRAILER;
 				}
-
-				// cout << flit.data << endl;
 				fila_flits.push(flit);
 			}
 		}

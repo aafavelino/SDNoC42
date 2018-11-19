@@ -66,6 +66,10 @@ SC_MODULE (sd) {
 	 */
 	void solicita_rota();
 
+	void verifica_trailer();
+
+	void remove_rota(tuple<int, int> destino);
+
 
 	bool roteamento_xy(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante);
 
@@ -148,6 +152,8 @@ SC_MODULE (sd) {
 		SC_METHOD(injeta_pacote);
 			sensitive << Clk.pos();
 		
+		SC_METHOD(verifica_trailer);
+			sensitive << Clk.pos();		
 	}
 };
 #endif

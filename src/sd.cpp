@@ -32,7 +32,7 @@ void sd::injeta_pacote() {
 		}
 	}
 
-	cout << noc42->network[0][1]->mux_local->saida<<" " << noc42->network[1][0]->mux_local->saida << " "<<noc42->network[2][1]->mux_local->saida<< " "<<noc42->network[0][0]->mux_local->saida << endl;
+	cout << noc42->network[0][1]->mux_local->saida<<" " << noc42->network[3][3]->mux_local->saida << " "<<noc42->network[1][0]->mux_local->saida<< " "<<noc42->network[2][1]->mux_local->saida<<" "<<noc42->network[0][0]->mux_local->saida << endl;
 	
 }
 
@@ -178,12 +178,80 @@ bool sd::roteamento_xy(tuple<int, int> origem, tuple<int, int> destino, int pos_
 	return true;
 }
 
+void sd::remove_rota(tuple<int, int> destino) {
+	for (int i = 0; i < rotas.size(); ++i) {
+		if (rotas[i].back() == destino) {
 
-        // deque_pacotes[0].front().possui_rota = true;  
-        // set_seletor[0][0][LESTE].write(tabela_mux[LESTE][LOCAL]);
-        // set_enables[0][0][LESTE].write(1);
-        // set_enables[0][1][LOCAL].write(1);
-        // set_seletor[0][1][LOCAL].write(tabela_mux[LOCAL][OESTE]);
-        // solicitacoes_de_rota.pop();
+			if(std::get<0>(rotas[i][1]) > std::get<0>(rotas[i][0])){
+				set_enables[std::get<0>(rotas[i][0])][std::get<1>(rotas[i][0])][SUL].write(0);
+			}else if(std::get<0>(rotas[i][1]) < std::get<0>(rotas[i][0])){
+				set_enables[std::get<0>(rotas[i][0])][std::get<1>(rotas[i][0])][NORTE].write(0);
+			}else if(std::get<1>(rotas[i][1]) > std::get<1>(rotas[i][0])){
+				set_enables[std::get<0>(rotas[i][0])][std::get<1>(rotas[i][0])][LESTE].write(0);
+			}else if(std::get<1>(rotas[i][1]) < std::get<1>(rotas[i][0])){
+				set_enables[std::get<0>(rotas[i][0])][std::get<1>(rotas[i][0])][OESTE].write(0);
+			}
 
+			for (int j = 1; j < (rotas[i].size()-1); j++) {
+				grafo_de_rotas[((std::get<0>(rotas[i][j])*ALTURA_REDE)+(std::get<1>(rotas[i][j])))][((std::get<0>(rotas[i][j+1])*ALTURA_REDE)+(std::get<1>(rotas[i][j+1])))] = 1;
 
+				if(std::get<0>(rotas[i][j-1]) < std::get<0>(rotas[i][j])){
+					if(std::get<0>(rotas[i][j+1]) > std::get<0>(rotas[i][j])){
+						set_enables[std::get<0>(rotas[i][j])][std::get<1>(rotas[i][j])][SUL].write(0);
+					}else if(std::get<1>(rotas[i][j+1]) > std::get<1>(rotas[i][j])){
+						set_enables[std::get<0>(rotas[i][j])][std::get<1>(rotas[i][j])][LESTE].write(0);
+					}else if(std::get<1>(rotas[i][j+1]) < std::get<1>(rotas[i][j])){
+						set_enables[std::get<0>(rotas[i][j])][std::get<1>(rotas[i][j])][OESTE].write(0);
+					}
+				}else if(std::get<0>(rotas[i][j-1]) > std::get<0>(rotas[i][j])){
+					if(std::get<0>(rotas[i][j+1]) < std::get<0>(rotas[i][j])){
+						set_enables[std::get<0>(rotas[i][j])][std::get<1>(rotas[i][j])][NORTE].write(0);
+					}else if(std::get<1>(rotas[i][j+1]) > std::get<1>(rotas[i][j])){
+						set_enables[std::get<0>(rotas[i][j])][std::get<1>(rotas[i][j])][LESTE].write(0);
+					}else if(std::get<1>(rotas[i][j+1]) < std::get<1>(rotas[i][j])){
+						set_enables[std::get<0>(rotas[i][j])][std::get<1>(rotas[i][j])][OESTE].write(0);
+					}
+				}else if(std::get<1>(rotas[i][j-1]) < std::get<1>(rotas[i][j])){
+					if(std::get<0>(rotas[i][j+1]) > std::get<0>(rotas[i][j])){
+						set_enables[std::get<0>(rotas[i][j])][std::get<1>(rotas[i][j])][SUL].write(0);
+					}else if(std::get<0>(rotas[i][j+1]) < std::get<0>(rotas[i][j])){
+						set_enables[std::get<0>(rotas[i][j])][std::get<1>(rotas[i][j])][NORTE].write(0);
+					}else if(std::get<1>(rotas[i][j+1]) > std::get<1>(rotas[i][j])){
+						set_enables[std::get<0>(rotas[i][j])][std::get<1>(rotas[i][j])][LESTE].write(0);
+					}
+				}else if(std::get<1>(rotas[i][j-1]) > std::get<1>(rotas[i][j])){
+					if(std::get<0>(rotas[i][j+1]) > std::get<0>(rotas[i][j])){
+						set_enables[std::get<0>(rotas[i][j])][std::get<1>(rotas[i][j])][SUL].write(0);
+					}else if(std::get<0>(rotas[i][j+1]) < std::get<0>(rotas[i][j])){
+						set_enables[std::get<0>(rotas[i][j])][std::get<1>(rotas[i][j])][NORTE].write(0);
+					}else if(std::get<1>(rotas[i][j+1]) < std::get<1>(rotas[i][j])){
+						set_enables[std::get<0>(rotas[i][j])][std::get<1>(rotas[i][j])][OESTE].write(0);
+					}
+				}
+			}
+
+			if(std::get<0>(rotas[i][(rotas[i].size()-2)]) < std::get<0>(rotas[i][(rotas[i].size()-1)])){
+				set_enables[std::get<0>(rotas[i][(rotas[i].size()-1)])][std::get<1>(rotas[i][(rotas[i].size()-1)])][LOCAL].write(0);
+			}else if(std::get<0>(rotas[i][(rotas[i].size()-2)]) > std::get<0>(rotas[i][(rotas[i].size()-1)])){
+				set_enables[std::get<0>(rotas[i][(rotas[i].size()-1)])][std::get<1>(rotas[i][(rotas[i].size()-1)])][LOCAL].write(0);
+			}else if(std::get<1>(rotas[i][(rotas[i].size()-2)]) < std::get<1>(rotas[i][(rotas[i].size()-1)])){
+				set_enables[std::get<0>(rotas[i][(rotas[i].size()-1)])][std::get<1>(rotas[i][(rotas[i].size()-1)])][LOCAL].write(0);
+			}else if(std::get<1>(rotas[i][(rotas[i].size()-2)]) > std::get<1>(rotas[i][(rotas[i].size()-1)])){
+				set_enables[std::get<0>(rotas[i][(rotas[i].size()-1)])][std::get<1>(rotas[i][(rotas[i].size()-1)])][LOCAL].write(0);
+			}
+		}
+	}
+}
+
+sc_uint<32> trailer = TRAILER;
+
+void sd::verifica_trailer() { 
+	for (int i = 0; i < ALTURA_REDE; ++i) {
+		for (int j = 0; j < LARGURA_REDE; ++j) {
+			if (noc42->network[i][j]->mux_local->saida == trailer) {
+				remove_rota(std::make_tuple(i,j));
+				noc42->network[i][j]->mux_local->saida.write(0);
+			}	
+		}
+	}
+}
