@@ -19,10 +19,11 @@ void sd::injeta_pacote() {
 			deque_pacotes[i].front().solicitou_rota = true;
 			solicitacoes_de_rota.push(i);
 			deque_pacotes[i].front().contador_idleCycles = 0;
+			deque_clock_inicial[i].push_back(clock);
 		} 
 		if(!deque_pacotes[i].empty() and (deque_pacotes[i].front().possui_rota == true)) {
 			// Caso seja o último flit deve-se tirar a flag que diz que possui uma rota
-			if (deque_pacotes[i].front().fila_flits.front().data == TRAILER)
+			if (deque_pacotes[i].front().fila_flits.front().data >= TRAILER)
 			{
 				// cout << "Trailer" << endl;
 				deque_pacotes[i].front().possui_rota = false;
@@ -268,6 +269,7 @@ void sd::remove_rota(tuple<int, int> destino) {
 			// cout << "ROTAS " << rotas.size() <<endl;
 			// rotas[i].erase (rotas[i].begin(),rotas[i].begin()+rotas[i].size());
 			rotas.erase (rotas.begin()+i);
+			
 			// cout << "ROTAS " << rotas.size() <<endl;
 
 			// cout << std::get<0>(rotas[i].front())<<" " << std::get<1>(rotas[i].front()) <<" > " <<  std::get<0>(rotas[i].back())<<" "<< std::get<1>(rotas[i].back()) << endl;
@@ -283,9 +285,14 @@ sc_uint<32> trailer = TRAILER;
 void sd::verifica_trailer() { 
 	for (int i = 0; i < ALTURA_REDE; ++i) {
 		for (int j = 0; j < LARGURA_REDE; ++j) {
-			if (noc42->network[i][j]->mux_local->saida == trailer) {
+			if (noc42->network[i][j]->mux_local->saida >= trailer) {
+				sc_uint<32> id_pacote = noc42->network[i][j]->mux_local->saida;
+				deque_clock_final[(id_pacote - trailer)].push_back(clock);
 				remove_rota(std::make_tuple(i,j));
 				noc42->network[i][j]->mux_local->saida.write(0);
+				if (rotas.empty() && solicitacoes_de_rota.empty())
+					sc_stop();
+				
 			}	
 		}
 	}

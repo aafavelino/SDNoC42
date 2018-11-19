@@ -52,8 +52,13 @@ int sc_main (int argc, char* argv[]) {
     int contador = 0;
     int posicao = 0;
     std::deque<pacote> deque_auxiliar;
-    deque_auxiliar.push_back(pacote(padrao_tfg[0][0],padrao_tfg[0][1], padrao_tfg[0][2], padrao_tfg[0][3],  padrao_tfg[0][4],  padrao_tfg[0][5],  padrao_tfg[0][6]));
+    std::deque<int> deque_auxiliar_clock_inicial;
+    std::deque<int> deque_auxiliar_clock_final;
+
+    deque_auxiliar.push_back(pacote(padrao_tfg[0][0],padrao_tfg[0][1], padrao_tfg[0][2], padrao_tfg[0][3],  padrao_tfg[0][4],  padrao_tfg[0][5],  padrao_tfg[0][6],0));
     software_defined->deque_pacotes.push_back(deque_auxiliar);
+    software_defined->deque_clock_inicial.push_back(deque_auxiliar_clock_inicial);
+    software_defined->deque_clock_final.push_back(deque_auxiliar_clock_final);
 
     deque_auxiliar.pop_front();
 
@@ -63,14 +68,17 @@ int sc_main (int argc, char* argv[]) {
   			contador++;
   			x_ant = padrao_tfg[i][0];
     		y_ant = padrao_tfg[i][1];
-    		deque_auxiliar.push_back(pacote(padrao_tfg[i][0],padrao_tfg[i][1], padrao_tfg[i][2], padrao_tfg[i][3],  padrao_tfg[i][4],  padrao_tfg[i][5],  padrao_tfg[i][6]));
+    		deque_auxiliar.push_back(pacote(padrao_tfg[i][0],padrao_tfg[i][1], padrao_tfg[i][2], padrao_tfg[i][3],  padrao_tfg[i][4],  padrao_tfg[i][5],  padrao_tfg[i][6],i));
     		software_defined->deque_pacotes.push_back(deque_auxiliar);
+        software_defined->deque_clock_inicial.push_back(deque_auxiliar_clock_inicial);
+        software_defined->deque_clock_final.push_back(deque_auxiliar_clock_final);
+
 
     		deque_auxiliar.pop_front();
     		posicao++;
   		} else {
   			contador++;
-  			software_defined->deque_pacotes[posicao].push_back(pacote(padrao_tfg[i][0],padrao_tfg[i][1], padrao_tfg[i][2], padrao_tfg[i][3],  padrao_tfg[i][4],  padrao_tfg[i][5],  padrao_tfg[i][6]));
+  			software_defined->deque_pacotes[posicao].push_back(pacote(padrao_tfg[i][0],padrao_tfg[i][1], padrao_tfg[i][2], padrao_tfg[i][3],  padrao_tfg[i][4],  padrao_tfg[i][5],  padrao_tfg[i][6], i));
 
   		}
   	}
@@ -101,6 +109,22 @@ int sc_main (int argc, char* argv[]) {
   	// Roda a simulação até encontrar um sc_stop();
   	sc_start(); 
 
+    double media = 0;
+    for (int i = 0; i < software_defined->deque_clock_final.size(); ++i){
+      
+      double media_interna = 0;
+
+      for (int j = 0; j < software_defined->deque_clock_final[i].size(); ++j) {
+        media_interna += software_defined->deque_clock_final[i][j]-software_defined->deque_clock_inicial[i][j];
+      }
+
+      media += (media_interna/software_defined->deque_clock_final[i].size());
+      
+    }
+
+    media = media/software_defined->deque_clock_final.size();
+
+    cout << "Latência média da simulação " << media << endl;
   	// cout << software_defined->noc42->network[0][1]->mux_local->saida << endl;
   	// cout << software_defined->noc42->network[1][0]->mux_local->saida << endl;
   	// cout << software_defined->noc42->network[0][1]->mux_oeste->entrada_4.read() << endl;

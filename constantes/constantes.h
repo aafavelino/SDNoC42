@@ -10,4 +10,4 @@
 
 
 // Flit terminador
-#define TRAILER 4294967295
+#define TRAILER 4000000000

@@ -42,7 +42,7 @@ public:
 	int contador_idleCycles = 0;
 
 
-	pacote(int xs, int ys, int xd, int yd, int qtd_flits, int qtd_pcts, int idleCycles) {
+	pacote(int xs, int ys, int xd, int yd, int qtd_flits, int qtd_pcts, int idleCycles, int id) {
 		
 		this->qtd_pcts =  qtd_pcts;
 		this->origem = std::make_tuple (xs,ys);
@@ -57,7 +57,7 @@ public:
 				this->flit.data = j + 1;
 				// Caso seja o flit trailer, escreve 0;
 				if(j == (qtd_flits-1)) {
-					this->flit.data = TRAILER;
+					this->flit.data = TRAILER+id;
 				}
 				fila_flits.push(flit);
 			}

@@ -23,6 +23,8 @@ SC_MODULE (sd) {
 
 	// Objeto do tipo vector de deques de pacote que fará as delegações de caminhos entre os cores
 	std::vector<std::deque<pacote> > deque_pacotes;  
+	std::vector<std::deque<int> > deque_clock_inicial;  
+	std::vector<std::deque<int> > deque_clock_final;  
 
 	std::queue<int> solicitacoes_de_rota;
 
