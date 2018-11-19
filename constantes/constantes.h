@@ -7,3 +7,7 @@
 // Dimensões da Rede
 #define ALTURA_REDE 4
 #define LARGURA_REDE 4
+
+
+// Flit terminador
+#define TRAILER 4294967295

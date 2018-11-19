@@ -14,7 +14,7 @@
 SC_MODULE (sd) {
 
 
-	std::vector<vector<int> > rotas;
+	std::vector<vector<tuple<int, int> > > rotas;
 
 	// Clock
  	sc_in_clk Clk;

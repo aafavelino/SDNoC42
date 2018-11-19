@@ -18,7 +18,7 @@ void sd::injeta_pacote() {
 			deque_pacotes[i].front().contador_idleCycles = 0;
 		} else if(!deque_pacotes[i].empty() and (deque_pacotes[i].front().possui_rota == true)) {
 			// Caso seja o último flit deve-se tirar a flag que diz que possui uma rota
-			if (deque_pacotes[i].front().fila_flits.front().data == 30)
+			if (deque_pacotes[i].front().fila_flits.front().data == TRAILER)
 			{
 				deque_pacotes[i].front().possui_rota = false;
 			}
@@ -31,8 +31,6 @@ void sd::injeta_pacote() {
 			}
 		}
 	}
-
-	// cout << noc42->network[0][0]->mux_leste->saida << endl;
 
 	cout << noc42->network[0][1]->mux_local->saida<<" " << noc42->network[1][0]->mux_local->saida << " "<<noc42->network[2][1]->mux_local->saida<< " "<<noc42->network[0][0]->mux_local->saida << endl;
 	
@@ -47,6 +45,16 @@ void sd::solicita_rota() {
 }
 
 bool sd::roteamento_xy(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante) {
+
+	for(int i = 0; i < rotas.size(); i++){
+		if(rotas[i][0] == origem){
+			return false;
+		}
+
+		if(rotas[i][rotas[i].size()-1] == destino){
+			return false;
+		}
+	}
 
 	std::vector<tuple<int, int> > rota;
 	int x_atual = std::get<0>(origem);
@@ -150,19 +158,22 @@ bool sd::roteamento_xy(tuple<int, int> origem, tuple<int, int> destino, int pos_
 		}
 	}
 
-		if(std::get<0>(rota[(rota.size()-2)]) < std::get<0>(rota[(rota.size()-1)])){
-			set_seletor[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(tabela_mux[LOCAL][NORTE]);
-			set_enables[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(1);
-		}else if(std::get<0>(rota[(rota.size()-2)]) > std::get<0>(rota[(rota.size()-1)])){
-			set_seletor[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(tabela_mux[LOCAL][SUL]);
-			set_enables[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(1);
-		}else if(std::get<1>(rota[(rota.size()-2)]) < std::get<1>(rota[(rota.size()-1)])){
-			set_seletor[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(tabela_mux[LOCAL][OESTE]);
-			set_enables[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(1);
-		}else if(std::get<1>(rota[(rota.size()-2)]) > std::get<1>(rota[(rota.size()-1)])){
-			set_seletor[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(tabela_mux[LOCAL][LESTE]);
-			set_enables[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(1);
-		}
+	if(std::get<0>(rota[(rota.size()-2)]) < std::get<0>(rota[(rota.size()-1)])){
+		set_seletor[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(tabela_mux[LOCAL][NORTE]);
+		set_enables[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(1);
+	}else if(std::get<0>(rota[(rota.size()-2)]) > std::get<0>(rota[(rota.size()-1)])){
+		set_seletor[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(tabela_mux[LOCAL][SUL]);
+		set_enables[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(1);
+	}else if(std::get<1>(rota[(rota.size()-2)]) < std::get<1>(rota[(rota.size()-1)])){
+		set_seletor[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(tabela_mux[LOCAL][OESTE]);
+		set_enables[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(1);
+	}else if(std::get<1>(rota[(rota.size()-2)]) > std::get<1>(rota[(rota.size()-1)])){
+		set_seletor[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(tabela_mux[LOCAL][LESTE]);
+		set_enables[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(1);
+	}
+
+	rotas.push_back(rota);
+
 	solicitacoes_de_rota.pop();
 	return true;
 }

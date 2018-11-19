@@ -7,6 +7,8 @@
 #include <iostream>
 #include <systemc.h>
 #include "flit.h"
+#include "../constantes/constantes.h"
+
 
 class pacote {
 	
@@ -55,7 +57,7 @@ public:
 				this->flit.data = j + 1;
 				// Caso seja o flit trailer, escreve 0;
 				if(j == (qtd_flits-1)) {
-					this->flit.data = 30;
+					this->flit.data = TRAILER;
 				}
 
 				// cout << flit.data << endl;
