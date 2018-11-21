@@ -68,7 +68,7 @@ int sc_main (int argc, char* argv[]) {
   			contador++;
   			x_ant = padrao_tfg[i][0];
     		y_ant = padrao_tfg[i][1];
-    		deque_auxiliar.push_back(pacote(padrao_tfg[i][0],padrao_tfg[i][1], padrao_tfg[i][2], padrao_tfg[i][3],  padrao_tfg[i][4],  padrao_tfg[i][5],  padrao_tfg[i][6],i));
+    		deque_auxiliar.push_back(pacote(padrao_tfg[i][0],padrao_tfg[i][1], padrao_tfg[i][2], padrao_tfg[i][3],  padrao_tfg[i][4],  padrao_tfg[i][5],  padrao_tfg[i][6],contador));
     		software_defined->deque_pacotes.push_back(deque_auxiliar);
         software_defined->deque_clock_inicial.push_back(deque_auxiliar_clock_inicial);
         software_defined->deque_clock_final.push_back(deque_auxiliar_clock_final);
@@ -77,8 +77,8 @@ int sc_main (int argc, char* argv[]) {
     		deque_auxiliar.pop_front();
     		posicao++;
   		} else {
-  			contador++;
-  			software_defined->deque_pacotes[posicao].push_back(pacote(padrao_tfg[i][0],padrao_tfg[i][1], padrao_tfg[i][2], padrao_tfg[i][3],  padrao_tfg[i][4],  padrao_tfg[i][5],  padrao_tfg[i][6], i));
+  			// contador++;
+  			software_defined->deque_pacotes[posicao].push_back(pacote(padrao_tfg[i][0],padrao_tfg[i][1], padrao_tfg[i][2], padrao_tfg[i][3],  padrao_tfg[i][4],  padrao_tfg[i][5],  padrao_tfg[i][6], contador));
 
   		}
   	}

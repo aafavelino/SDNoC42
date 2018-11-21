@@ -19,7 +19,7 @@ void sd::injeta_pacote() {
 			deque_pacotes[i].front().solicitou_rota = true;
 			solicitacoes_de_rota.push(i);
 			deque_pacotes[i].front().contador_idleCycles = 0;
-			deque_clock_inicial[i].push_back(clock);
+			// deque_clock_inicial[i].push_back(clock);
 		} 
 		if(!deque_pacotes[i].empty() and (deque_pacotes[i].front().possui_rota == true)) {
 			// Caso seja o último flit deve-se tirar a flag que diz que possui uma rota
@@ -40,7 +40,23 @@ void sd::injeta_pacote() {
 		}
 	}
 
-	cout << noc42->network[0][1]->mux_local->saida<<" " << noc42->network[1][1]->mux_local->saida << " "<<noc42->network[2][2]->mux_local->saida<< " "<<noc42->network[0][3]->mux_local->saida<<  endl;
+	cout << noc42->network[0][0]->mux_local->saida<<" " 
+	 << noc42->network[0][1]->mux_local->saida<< " "
+	 << noc42->network[0][2]->mux_local->saida<< " "
+	 << noc42->network[0][3]->mux_local->saida<< " "
+	 << noc42->network[1][0]->mux_local->saida<< " "
+	 << noc42->network[1][1]->mux_local->saida<< " "
+	 << noc42->network[1][2]->mux_local->saida<< " "
+	 << noc42->network[1][3]->mux_local->saida<< " "
+	 << noc42->network[2][0]->mux_local->saida<< " "
+	 << noc42->network[2][1]->mux_local->saida<< " "
+	 << noc42->network[2][2]->mux_local->saida<< " "
+	 << noc42->network[2][3]->mux_local->saida<< " "
+	 << noc42->network[3][0]->mux_local->saida<< " "
+	 << noc42->network[3][1]->mux_local->saida<< " "
+	 << noc42->network[3][2]->mux_local->saida<< " "
+	 << noc42->network[3][3]->mux_local->saida<< " "
+	 << endl;
 	
 }
 
@@ -287,11 +303,11 @@ void sd::verifica_trailer() {
 		for (int j = 0; j < LARGURA_REDE; ++j) {
 			if (noc42->network[i][j]->mux_local->saida >= trailer) {
 				sc_uint<32> id_pacote = noc42->network[i][j]->mux_local->saida;
-				deque_clock_final[(id_pacote - trailer)].push_back(clock);
+				// deque_clock_final[(id_pacote - trailer)].push_back(clock);
 				remove_rota(std::make_tuple(i,j));
 				noc42->network[i][j]->mux_local->saida.write(0);
-				if (rotas.empty() && solicitacoes_de_rota.empty())
-					sc_stop();
+				// if (rotas.empty() && solicitacoes_de_rota.empty())
+					// sc_stop();
 				
 			}	
 		}
