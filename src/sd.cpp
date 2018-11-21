@@ -7,8 +7,9 @@
 void sd::injeta_pacote() {
 	clock++;
 
-	for (int i = 0; i < deque_pacotes.size(); ++i) {
+	
 
+	for (int i = 0; i < deque_pacotes.size(); ++i) {
 
 		deque_pacotes[i].front().contador_idleCycles++;
 		/** Se o pacote não está vazio e não possuir ainda uma rota
@@ -19,7 +20,7 @@ void sd::injeta_pacote() {
 			deque_pacotes[i].front().solicitou_rota = true;
 			solicitacoes_de_rota.push(i);
 			deque_pacotes[i].front().contador_idleCycles = 0;
-			// deque_clock_inicial[i].push_back(clock);
+			deque_clock_inicial[i].push_back(clock);
 		} 
 		if(!deque_pacotes[i].empty() and (deque_pacotes[i].front().possui_rota == true)) {
 			// Caso seja o último flit deve-se tirar a flag que diz que possui uma rota
@@ -36,9 +37,16 @@ void sd::injeta_pacote() {
 			if (deque_pacotes[i].front().fila_flits.empty())
 			{
 				deque_pacotes[i].pop_front();
+				// if(deque_pacotes[i].empty()){
+				// 	deque_pacotes.erase(deque_pacotes.begin()+i);
+				// }
 			}
 		}
 	}
+
+	// if(deque_pacotes.empty() == 1){
+	// 	fim_simulacao = true;
+	// }
 
 	cout << noc42->network[0][0]->mux_local->saida<<" " 
 	 << noc42->network[0][1]->mux_local->saida<< " "
@@ -58,6 +66,15 @@ void sd::injeta_pacote() {
 	 << noc42->network[3][3]->mux_local->saida<< " "
 	 << endl;
 	
+}
+
+void sd::parada(){
+	for(int i = 0; i < deque_pacotes.size(); i++){
+		fim_simulacao = true;
+		if(deque_pacotes[i].size() != 0){
+			fim_simulacao = false;
+		}
+	}
 }
 
 void sd::solicita_rota() {
@@ -303,13 +320,15 @@ void sd::verifica_trailer() {
 		for (int j = 0; j < LARGURA_REDE; ++j) {
 			if (noc42->network[i][j]->mux_local->saida >= trailer) {
 				sc_uint<32> id_pacote = noc42->network[i][j]->mux_local->saida;
-				// deque_clock_final[(id_pacote - trailer)].push_back(clock);
+				deque_clock_final[(id_pacote - trailer)].push_back(clock);
 				remove_rota(std::make_tuple(i,j));
 				noc42->network[i][j]->mux_local->saida.write(0);
-				// if (rotas.empty() && solicitacoes_de_rota.empty())
-					// sc_stop();
 				
-			}	
+			}
 		}
+	}
+
+	if(fim_simulacao == true){
+		sc_stop();
 	}
 }

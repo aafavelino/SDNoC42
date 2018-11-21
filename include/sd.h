@@ -19,7 +19,7 @@ SC_MODULE (sd) {
 	// Clock
  	sc_in_clk Clk;
  	unsigned long long int clock;	
-
+ 	bool fim_simulacao;
 
 	// Objeto do tipo vector de deques de pacote que fará as delegações de caminhos entre os cores
 	std::vector<std::deque<pacote> > deque_pacotes;  
@@ -75,9 +75,12 @@ SC_MODULE (sd) {
 
 	bool roteamento_xy(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante);
 
+	void parada();
+
 
 	SC_CTOR(sd) {
 		noc42 = new noc("noc_42");
+		fim_simulacao = false;
 
 		// Preenchimento do Grafo da Aplicação
 		for (int i = 0; i < (ALTURA_REDE*LARGURA_REDE); ++i) {
@@ -155,7 +158,10 @@ SC_MODULE (sd) {
 			sensitive << Clk.pos();
 		
 		SC_METHOD(verifica_trailer);
-			sensitive << Clk.pos();		
+			sensitive << Clk.pos();
+
+		SC_METHOD(parada);
+			sensitive << Clk.pos();
 	}
 };
 #endif
