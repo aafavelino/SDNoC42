@@ -22,7 +22,7 @@ void sd::injeta_pacote() {
 			deque_pacotes[i].front().contador_idleCycles = 0;
 			// cout << "Inicial " << clock << endl;
 			deque_clock_inicial[i].push_back(clock);
-			
+
 
 
 
@@ -48,10 +48,10 @@ void sd::injeta_pacote() {
 
 				}
 
-				cout << "CLK atual. "<< clock << endl;
-				cout << "CLK antigo. "<< deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)] << endl;
+				// cout << "CLK atual. "<< clock << endl;
+				// cout << "CLK antigo. "<< deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)] << endl;
 				// cout << " tamanho_de_rota " <<tamanho_de_rota <<endl;
-				cout << "SOMA " <<(clock+tamanho_de_rota+deque_pacotes[i].front().qtd_flits-1)-deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)] << endl;
+				// cout << "SOMA " <<(clock+tamanho_de_rota+deque_pacotes[i].front().qtd_flits-1)-deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)] << endl;
 				// cout << "ISTO ANTES "<< deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)] << endl;
 				deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)] = (clock+tamanho_de_rota+deque_pacotes[i].front().qtd_flits-1)-deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)];
 				// deque_clock_inicial[i].push_back((clock+tamanho_de_rota+  deque_pacotes[i].front().qtd_flits-1)-deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)]);
@@ -91,18 +91,18 @@ void sd::injeta_pacote() {
 				// 	deque_pacotes.erase(deque_pacotes.begin()+i);
 				// }
 			}
-		 }else if (!deque_pacotes[i].empty() and (deque_pacotes[i].front().solicitou_rota == true) and deque_clock_inicial[i].size()!=0)
-		{
-			cout << "print "<<deque_clock_inicial.size() <<endl;
-			cout << deque_clock_inicial[i].size() << endl;
-			cout << "print antes "<<deque_clock_inicial[i][deque_clock_inicial[i].size()-1] <<endl;
+		 }//else if (!deque_pacotes[i].empty() and (deque_pacotes[i].front().solicitou_rota == true) and deque_clock_inicial[i].size()!=0)
+		// {
+			// cout << "print "<<deque_clock_inicial.size() <<endl;
+			// cout << deque_clock_inicial[i].size() << endl;
+			// cout << "print antes "<<deque_clock_inicial[i][deque_clock_inicial[i].size()-1] <<endl;
 
 			// deque_clock_inicial[i][deque_clock_inicial[i].size()-1]+=1;
-			cout << "print depois "<<deque_clock_inicial[i][deque_clock_inicial[i].size()-1] <<endl;
+			// cout << "print depois "<<deque_clock_inicial[i][deque_clock_inicial[i].size()-1] <<endl;
 
 			// cout << "print "<<(deque_clock_inicial[i].size()-1) <<endl;
 
-		}
+		// }
 	}
 
 	// if(deque_pacotes.empty() == 1){

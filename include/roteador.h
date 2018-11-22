@@ -10,7 +10,6 @@
 #include <time.h>
 #include "buffer.h"
 #include "mux.h"
-#include "controle_de_fluxo.h"
 
 
 SC_MODULE (roteador){
