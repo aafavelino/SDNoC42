@@ -23,8 +23,8 @@ SC_MODULE (sd) {
 
 	// Objeto do tipo vector de deques de pacote que fará as delegações de caminhos entre os cores
 	std::vector<std::deque<pacote> > deque_pacotes;  
-	std::vector<std::deque<int> > deque_clock_inicial;  
-	std::vector<std::deque<int> > deque_clock_final;  
+	std::vector<std::deque<long long int> > deque_clock_inicial;  
+	std::vector<std::deque<long long int> > deque_clock_final;  
 
 	std::queue<int> solicitacoes_de_rota;
 
@@ -150,12 +150,14 @@ SC_MODULE (sd) {
 			}
 		}
 
-		SC_METHOD(solicita_rota);
-			sensitive << Clk.pos();
+
 
 		// Verificar se esse método é sensitivo ao clock também..
 		SC_METHOD(injeta_pacote);
 			sensitive << Clk.pos();
+
+		SC_METHOD(solicita_rota);
+			sensitive << Clk.pos();			
 		
 		SC_METHOD(verifica_trailer);
 			sensitive << Clk.pos();

@@ -52,8 +52,8 @@ int sc_main (int argc, char* argv[]) {
     int contador = 0;
     int posicao = 0;
     std::deque<pacote> deque_auxiliar;
-    std::deque<int> deque_auxiliar_clock_inicial;
-    std::deque<int> deque_auxiliar_clock_final;
+    std::deque<long long int> deque_auxiliar_clock_inicial;
+    std::deque<long long int> deque_auxiliar_clock_final;
 
     deque_auxiliar.push_back(pacote(padrao_tfg[0][0],padrao_tfg[0][1], padrao_tfg[0][2], padrao_tfg[0][3],  padrao_tfg[0][4],  padrao_tfg[0][5],  padrao_tfg[0][6],0));
     software_defined->deque_pacotes.push_back(deque_auxiliar);
@@ -110,21 +110,39 @@ int sc_main (int argc, char* argv[]) {
   	sc_start(); 
 
     double media = 0;
-    for (int i = 0; i < software_defined->deque_clock_final.size(); ++i){
+    // for (int i = 0; i < software_defined->deque_clock_inicial.size(); ++i){
       
-      double media_interna = 0;
+    //   double media_interna = 0;
 
-      for (int j = 0; j < software_defined->deque_clock_final[i].size(); ++j) {
-        media_interna += software_defined->deque_clock_final[i][j]-software_defined->deque_clock_inicial[i][j];
+    //   for (int j = 0; j < software_defined->deque_clock_inicial[i].size(); ++j) {
+    //     // media_interna += software_defined->deque_clock_final[i][j]-software_defined->deque_clock_inicial[i][j];
+    //     media_interna += software_defined->deque_clock_inicial[i][j];
+        
+    //   }
+
+    //   media += (media_interna/software_defined->deque_clock_inicial[i].size());
+      
+    // }
+
+    // media = media/software_defined->deque_clock_inicial.size();
+
+
+    for (int i = 0; i < software_defined->deque_clock_inicial.size(); ++i)
+    {
+      for (int j = 0; j < software_defined->deque_clock_inicial[i].size(); ++j)
+      {
+        media += software_defined->deque_clock_inicial[i][j];
       }
-
-      media += (media_interna/software_defined->deque_clock_final[i].size());
-      
     }
 
-    media = media/software_defined->deque_clock_final.size();
+    int divisao_interna = 0;
+    for (int i = 0; i < software_defined->deque_clock_inicial.size(); ++i)
+    {
+      divisao_interna += software_defined->deque_clock_inicial[i].size();
+    }
 
-    cout << "Latência média da simulação " << media << endl;
+
+    cout << "Latência média da simulação " << media/divisao_interna << endl;
   	// cout << software_defined->noc42->network[0][1]->mux_local->saida << endl;
   	// cout << software_defined->noc42->network[1][0]->mux_local->saida << endl;
   	// cout << software_defined->noc42->network[0][1]->mux_oeste->entrada_4.read() << endl;

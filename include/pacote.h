@@ -39,6 +39,8 @@ public:
 	bool possui_rota = false;
 	bool solicitou_rota = false;
 
+	bool primeiro_flit = true;
+
 	int contador_idleCycles = 0;
 
 
