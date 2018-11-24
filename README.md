@@ -16,7 +16,7 @@ Em suma lá você poderá encontrar os arquivos.cpp que devem ser compilados... 
 
 ## Executando uma simulação
 
- 1. Você pode definir o Algoritmo de Roteamento (Que por enquanto temos o XY baseado na busca em profundidade DFS e O algoritmo de Dijkstra)
+ 1. Você pode definir o Algoritmo de Roteamento (Que por enquanto temos o XY baseado na busca em profundidade DFS e o algoritmo de Dijkstra)
  2. Em traffic.txt é definido o padrão de tráfego (Que você pode gerar o tráfego pelo uniform.cpp ou setar manualmente... Ainda não implementamos o gerador de todos os padrões) Você também pode gerar o padrão manualmente pela ferramenta REDSCARF.
  3. Por fim é só executar o arquivo gerado ao compilar a noc. 
 
