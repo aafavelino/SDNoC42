@@ -22,9 +22,9 @@ Em suma lá você poderá encontrar os arquivos.cpp que devem ser compilados... 
 
  A execução é feita da seguinte forma ````./bin/compilado 1 4 4 ````
 
- O primeiro argumento é referênte ao sorteio dos fluxos, caso queira sortear sete 1 senão, sete 0. Obs.: Só sorteie se utilizar o padrão uniforme.
+ O primeiro argumento é referente ao sorteio dos fluxos, caso queira sortear sete 1 senão, sete 0. Obs.: Só sorteie se utilizar o padrão uniforme.
 
- Os outros dois argumentos são referêntes às dimensões da NoC, esse do exemplo é para uma NoC Mesh 4x4.
+ Os outros dois argumentos são referentes às dimensões da NoC, esse do exemplo é para uma NoC Mesh 4x4.
 
  Para mais informações entre em contato com Adelino Afonso no email abaixo ou pelo telefone 084 986.348.534.
 
