@@ -2,9 +2,12 @@
 
 ## Como executar o simulador?
 ### Instalando e configurando o Systemc
-Primeiramente você precisa ter o systemc instalado em sua máquina, você pode encontrar em [accellera.org](http://www.accellera.org/downloads/standards/systemc). Siga as instruções de instalação dos fóruns do site.
+Primeiramente você precisa ter o systemc instalado em sua máquina, você pode encontrar em [accellera.org](http://www.accellera.org/downloads/standards/systemc). Siga as instruções de instalação do site.
 
+Caso não tenha conseguido esse vídeo é bem didático: https://www.youtube.com/watch?v=rLBScPm_bis
 
+Após a instalação, sete a variável de ambiente SC_SIGNAL_WRITE_CHECK para DISABLE no bash_profile 
+````export SC_SIGNAL_WRITE_CHECK=DISABLE````
 
 ### Compilando a NOC
 Existe um arquivo com um exemplo de como compilar tanto no mac quanto no linux. Em suma é só um exemplo pois pode variar de acordo com o modo de como você instalou o systemc. O arquivo é o ~~**compiler.sh**~~. 
