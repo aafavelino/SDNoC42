@@ -7,135 +7,48 @@
 void sd::injeta_pacote() {
 	clock++;
 
-	
-
 	for (int i = 0; i < deque_pacotes.size(); ++i) {
-
 		deque_pacotes[i].front().contador_idleCycles++;
 		/** Se o pacote não está vazio e não possuir ainda uma rota
 		 *  então o mesmo irá solicitar ao mestre uma rota;
 		 */
 		if (!deque_pacotes[i].empty() and (deque_pacotes[i].front().possui_rota == false) and (deque_pacotes[i].front().solicitou_rota == false) and (deque_pacotes[i].front().contador_idleCycles >= deque_pacotes[i].front().idleCycles)) {
-			// cout << "solicitou_rota" << endl;
 			deque_pacotes[i].front().solicitou_rota = true;
 			solicitacoes_de_rota.push(i);
 			deque_pacotes[i].front().contador_idleCycles = 0;
-			// cout << "Inicial " << clock << endl;
 			deque_clock_inicial[i].push_back(clock);
-
-
-
-
 		} 
 		if(!deque_pacotes[i].empty() and (deque_pacotes[i].front().possui_rota == true)) {
 			
-			if (deque_pacotes[i].front().primeiro_flit)
-			{	
-				// cout << "aqui" << get<0>(deque_pacotes[i].front().origem)<<" " << get<1>(deque_pacotes[i].front().origem) << endl;
+			if (deque_pacotes[i].front().primeiro_flit) {	
+
 				deque_pacotes[i].front().primeiro_flit = false;
 				int tamanho_de_rota;
 
-				for(int j = 0; j < rotas.size(); j++){
-					// cout << "aqui2 " << get<0>(rotas[j][0])<<" " << get<1>(rotas[j][0]) <<" " << rotas[j].size()<< endl;
-					// cout <<"..."<< endl;
-					// cout << "rotasss " << rotas.size() << endl;
+				for(int j = 0; j < rotas.size(); j++) {
 					if((rotas[j][0] == deque_pacotes[i].front().origem) && (rotas[j].back() == deque_pacotes[i].front().destino)){
-					// if((get<0>(rotas[i][0])==get<0>(deque_pacotes[i].front().origem)) && (get<1>(rotas[i][0])==get<1>(deque_pacotes[i].front().origem))){
-						// cout<<"aqui3" << endl;
 						tamanho_de_rota =  rotas[j].size();
-
 					}
-
 				}
-
-				// cout << "CLK atual. "<< clock << endl;
-				// cout << "CLK antigo. "<< deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)] << endl;
-				// cout << " tamanho_de_rota " <<tamanho_de_rota <<endl;
-				// cout << "SOMA " <<(clock+tamanho_de_rota+deque_pacotes[i].front().qtd_flits-1)-deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)] << endl;
-				// cout << "ISTO ANTES "<< deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)] << endl;
 				deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)] = (clock+tamanho_de_rota+deque_pacotes[i].front().qtd_flits-1)-deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)];
-				// deque_clock_inicial[i].push_back((clock+tamanho_de_rota+  deque_pacotes[i].front().qtd_flits-1)-deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)]);
-				
-
-				// deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)] = clock-deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)];
-				// deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)] += tamanho_de_rota;
-				// cout << "ISTO "<< deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)] << endl;
 			}
 
-
-
-
-
 			// Caso seja o último flit deve-se tirar a flag que diz que possui uma rota			
-			if (deque_pacotes[i].front().fila_flits.front().data >= TRAILER)
-			{
-				// cout << "Trailer" << endl;
+			if (deque_pacotes[i].front().fila_flits.front().data >= TRAILER) {
 				deque_pacotes[i].front().possui_rota = false;
 				deque_pacotes[i].front().solicitou_rota = false;
 				deque_pacotes[i].front().primeiro_flit = true;
 			}
-
-
-
-
-
 			cores[std::get<0>(deque_pacotes[i].front().origem)][std::get<1>(deque_pacotes[i].front().origem)].write(deque_pacotes[i].front().fila_flits.front().data);
-			// cout << deque_pacotes[i].front().fila_flits.front().data << endl;
-			// cout << "injetou " << deque_pacotes[i].front().fila_flits.front().data << " em ["<< std::get<0>(deque_pacotes[i].front().origem) <<"]["<<std::get<1>(deque_pacotes[i].front().origem)<<"]"<< endl;
 			deque_pacotes[i].front().fila_flits.pop();
-			if (deque_pacotes[i].front().fila_flits.empty())
-			{
+			if (deque_pacotes[i].front().fila_flits.empty()) {
 				deque_pacotes[i].pop_front();
-				///AQUIIIIIÍiii
-				// if(deque_pacotes[i].empty()){
-				// 	deque_pacotes.erase(deque_pacotes.begin()+i);
-				// }
 			}
-		 }//else if (!deque_pacotes[i].empty() and (deque_pacotes[i].front().solicitou_rota == true) and deque_clock_inicial[i].size()!=0)
-		// {
-			// cout << "print "<<deque_clock_inicial.size() <<endl;
-			// cout << deque_clock_inicial[i].size() << endl;
-			// cout << "print antes "<<deque_clock_inicial[i][deque_clock_inicial[i].size()-1] <<endl;
-
-			// deque_clock_inicial[i][deque_clock_inicial[i].size()-1]+=1;
-			// cout << "print depois "<<deque_clock_inicial[i][deque_clock_inicial[i].size()-1] <<endl;
-
-			// cout << "print "<<(deque_clock_inicial[i].size()-1) <<endl;
-
-		// }
+		}
 	}
-
-	// if(deque_pacotes.empty() == 1){
-	// 	fim_simulacao = true;
-	// }
-
-
-
-	// cout << noc42->network[0][0]->mux_local->saida<<" " 
-	//  << noc42->network[0][1]->mux_local->saida<< " "
-	//  << noc42->network[0][2]->mux_local->saida<< " "
-	//  << noc42->network[0][3]->mux_local->saida<< " "
-	//  << noc42->network[1][0]->mux_local->saida<< " "
-	//  << noc42->network[1][1]->mux_local->saida<< " "
-	//  << noc42->network[1][2]->mux_local->saida<< " "
-	//  << noc42->network[1][3]->mux_local->saida<< " "
-	//  << noc42->network[2][0]->mux_local->saida<< " "
-	//  << noc42->network[2][1]->mux_local->saida<< " "
-	//  << noc42->network[2][2]->mux_local->saida<< " "
-	//  << noc42->network[2][3]->mux_local->saida<< " "
-	//  << noc42->network[3][0]->mux_local->saida<< " "
-	//  << noc42->network[3][1]->mux_local->saida<< " "
-	//  << noc42->network[3][2]->mux_local->saida<< " "
-	//  << noc42->network[3][3]->mux_local->saida<< " "
-	//  << endl;
-
-	
 }
 
 void sd::parada(){
-	// if(deque_pacotes.empty() == 1){
-	// 	fim_simulacao = true;
-	// }
 	for(int i = 0; i < deque_pacotes.size(); i++){
 		fim_simulacao = true;
 		if(deque_pacotes[i].empty()==0){
@@ -146,16 +59,8 @@ void sd::parada(){
 }
 
 void sd::solicita_rota() {
-	// cout<< sc_time_stamp()<<endl;
 	if (!solicitacoes_de_rota.empty())
 	{	
-
-		// if(deque_pacotes[solicitacoes_de_rota.front()].front().solicitou_rota == true)
-			// deque_clock_inicial[solicitacoes_de_rota.front()].push_back(clock);
-
-		
-		// cout << "SAIDA mux_leste "<< noc42->network[0][0]->mux_leste->saida << endl;
-		// cout << solicitacoes_de_rota.size() << endl;
 		roteamento_xy(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());
 	}
 }
@@ -172,11 +77,7 @@ bool sd::roteamento_xy(tuple<int, int> origem, tuple<int, int> destino, int pos_
 		}
 	}
 
-	// cout << "XY"<< endl;
-
 	std::vector<tuple<int, int> > rota;
-
-	// cout << rota.size()<< endl;
 	int x_atual = std::get<0>(origem);
 	int y_atual = std::get<1>(origem);
 
@@ -204,8 +105,6 @@ bool sd::roteamento_xy(tuple<int, int> origem, tuple<int, int> destino, int pos_
 	for (int i = 0; i < (rota.size()-1); ++i) {
 
 		if (grafo_de_rotas[((std::get<0>(rota[i])*ALTURA_REDE)+(std::get<1>(rota[i])))][((std::get<0>(rota[i+1])*ALTURA_REDE)+(std::get<1>(rota[i+1])))] != 1) {
-			// cout << "Não TEM ROTA" << endl;
-			// rota.erase (rota.begin(), rota.begin()+rota.size());
 			return false;
 		}
 		
@@ -294,15 +193,12 @@ bool sd::roteamento_xy(tuple<int, int> origem, tuple<int, int> destino, int pos_
 
 	rotas.push_back(rota);
 	solicitacoes_de_rota.pop();
-	// cout << "AQUIIII" << endl;
 
-	// cout << "TEM ROTA" << endl;
 	deque_pacotes[pos_solicitante].front().possui_rota = true;
 	return true;
 }
 
 void sd::remove_rota(tuple<int, int> destino) {
-	// cout << "remove_rota"<<endl;
 	for (int i = 0; i < rotas.size(); ++i) {
 		if (rotas[i].back() == destino) {
 
@@ -369,19 +265,9 @@ void sd::remove_rota(tuple<int, int> destino) {
 			}else if(std::get<1>(rotas[i][(rotas[i].size()-2)]) > std::get<1>(rotas[i][(rotas[i].size()-1)])){
 				set_enables[std::get<0>(rotas[i][(rotas[i].size()-1)])][std::get<1>(rotas[i][(rotas[i].size()-1)])][LOCAL].write(0);
 			}
-		// cout << "rotas " <<  rotas[i].size() << endl;
-			// Zerar a rota que foi liberada
-			// cout << std::get<0>(rotas[i].front())<<" " << std::get<1>(rotas[i].front()) <<" > " <<  std::get<0>(rotas[i].back())<<" "<< std::get<1>(rotas[i].back()) << endl;
-			// cout << (rotas[i].back() == destino) << endl;
-			// cout << "ROTAS " << rotas.size() <<endl;
-			// rotas[i].erase (rotas[i].begin(),rotas[i].begin()+rotas[i].size());
-			rotas.erase (rotas.begin()+i);
-			
-			// cout << "ROTAS " << rotas.size() <<endl;
 
-			// cout << std::get<0>(rotas[i].front())<<" " << std::get<1>(rotas[i].front()) <<" > " <<  std::get<0>(rotas[i].back())<<" "<< std::get<1>(rotas[i].back()) << endl;
-			// cout << (rotas[i].back() == destino) << endl;
-		// cout << "rotas " <<  rotas[i].size() << endl;			
+			rotas.erase (rotas.begin()+i);
+		
 		}
 
 	}
@@ -395,7 +281,6 @@ void sd::verifica_trailer() {
 			if (noc42->network[i][j]->mux_local->saida >= trailer) {
 				sc_uint<32> id_pacote = noc42->network[i][j]->mux_local->saida;
 				deque_clock_final[(id_pacote - trailer)].push_back(clock);
-				// cout << "Final " << clock << endl;
 				remove_rota(std::make_tuple(i,j));
 				noc42->network[i][j]->mux_local->saida.write(0);
 				

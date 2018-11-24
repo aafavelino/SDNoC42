@@ -11,11 +11,19 @@
 #include <stdlib.h>  
 #include <time.h>   
 #include <systemc.h>
+#include <../constantes/constantes.h>
 #include "sd.h"
 
 using namespace std;
 
+
+std::function<int (int, int)> func = [](int i, int j) {
+  return rand() % i + j;
+};
+
 int sc_main (int argc, char* argv[]) {
+
+  std::srand (unsigned(std::time(0)));
 
 	// Instância do software defined
 	sd *software_defined = new sd("SD");
@@ -44,6 +52,24 @@ int sc_main (int argc, char* argv[]) {
    	}
 
    	fclose(traffic);
+
+    /**
+     * Aqui é feito o sorteio dos fluxos para o padrão uniforme.
+     * caso queira fazer o sorteio sete o primeiro argumento para
+     * 1 e os respectivos argumentos serão a largura e altura da NoC.
+     */
+    if (atoi(argv[1]) == 1) {
+      int fluxos = atoi(argv[2]) * atoi(argv[3]);
+      int value = fluxos-1;
+      int topo = value;
+      for (int i = 0; i < fluxos; ++i) {
+        for (int j = i*value; j < topo; ++j) {
+          swap(padrao_tfg[j],padrao_tfg[(j + (rand() % (int)((topo-1) - j + 1)))]);
+        }
+          topo += value;
+      }
+    }
+
 
  	
  	std::queue<bool> fila_aux;
@@ -77,55 +103,15 @@ int sc_main (int argc, char* argv[]) {
     		deque_auxiliar.pop_front();
     		posicao++;
   		} else {
-  			// contador++;
   			software_defined->deque_pacotes[posicao].push_back(pacote(padrao_tfg[i][0],padrao_tfg[i][1], padrao_tfg[i][2], padrao_tfg[i][3],  padrao_tfg[i][4],  padrao_tfg[i][5],  padrao_tfg[i][6], contador));
 
   		}
   	}
 
-	// software_defined->set_seletor[0][0][LESTE].write(software_defined->tabela_mux[LESTE][LOCAL]);
-	// software_defined->set_enables[0][0][LESTE].write(1);
-	// software_defined->set_enables[0][1][LOCAL].write(1);
-	// software_defined->set_seletor[0][1][LOCAL].write(software_defined->tabela_mux[LOCAL][OESTE]);
-
-	// software_defined->set_seletor[0][1][OESTE].write(software_defined->tabela_mux[OESTE][LOCAL]);
-	// software_defined->set_enables[0][1][OESTE].write(1);
-
-	// // software_defined->set_enables[0][0][LESTE].write(1);
-	// // software_defined->set_seletor[0][0][LESTE].write(software_defined->tabela_mux[SUL][LESTE]);
-
-	// software_defined->set_enables[0][0][SUL].write(1);
-	// software_defined->set_seletor[0][0][SUL].write(software_defined->tabela_mux[SUL][LESTE]);
-
-	// software_defined->set_enables[1][0][LOCAL].write(1);
-	// software_defined->set_seletor[1][0][LOCAL].write(software_defined->tabela_mux[LOCAL][NORTE]);
-	
-
-	// software_defined->cores[0][0].write(6);
-	// software_defined->cores[0][1].write(5);
-
-
-
   	// Roda a simulação até encontrar um sc_stop();
   	sc_start(); 
 
     double media = 0;
-    // for (int i = 0; i < software_defined->deque_clock_inicial.size(); ++i){
-      
-    //   double media_interna = 0;
-
-    //   for (int j = 0; j < software_defined->deque_clock_inicial[i].size(); ++j) {
-    //     // media_interna += software_defined->deque_clock_final[i][j]-software_defined->deque_clock_inicial[i][j];
-    //     media_interna += software_defined->deque_clock_inicial[i][j];
-        
-    //   }
-
-    //   media += (media_interna/software_defined->deque_clock_inicial[i].size());
-      
-    // }
-
-    // media = media/software_defined->deque_clock_inicial.size();
-
 
     for (int i = 0; i < software_defined->deque_clock_inicial.size(); ++i)
     {
@@ -143,9 +129,6 @@ int sc_main (int argc, char* argv[]) {
 
 
     cout << "Latência média da simulação " << media/divisao_interna << endl;
-  	// cout << software_defined->noc42->network[0][1]->mux_local->saida << endl;
-  	// cout << software_defined->noc42->network[1][0]->mux_local->saida << endl;
-  	// cout << software_defined->noc42->network[0][1]->mux_oeste->entrada_4.read() << endl;
 
   	return 0;
 }

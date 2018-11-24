@@ -1,0 +1,720 @@
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.0944
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.0736
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 28.2014
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 32.1861
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 29.9347
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.8986
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 29.4014
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 38.9236
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.3833
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 29.1986
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 37.2222
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.4694
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.7639
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 36.3861
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.9431
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.6708
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.7139
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.4653
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 34.1681
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.3222
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 26.9236
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.3958
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.6111
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 36.6167
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.7514
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 27.9403
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.15
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.9389
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 32.5986
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.5111
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 35.7069
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 29.9825
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 38.169
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 29.8449
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.7689
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.8108
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 36.6364
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 39.2419
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 37.5456
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 36.2582
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 36.864
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 34.8882
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 36.4071
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 36.2169
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.7665
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.4593
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 34.1876
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.205
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 35.409
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.0743
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.6494
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 32.1272
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.2125
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 28.2203
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 34.5439
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.8286
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.3068
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 32.8321
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 29.9158
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 35.9976
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.2629
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.5279
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.0037
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.2183
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.2563
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 49.9021
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.1767
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.7587
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.6825
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.53
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 49.8321
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.1392
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.2912
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 49.8846
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.5292
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.8263
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.8133
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.8096
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 49.9275
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 45.0962
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 49.5258
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.585
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.9367
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.3971
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.605
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.8142
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.4196
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.6362
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 48.7771
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 49.4679
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.7411
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.1906
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.9721
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.5316
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 55.9393
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.3202
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.3872
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 48.6413
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.1269
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 49.2006
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 49.4144
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.5059
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.2491
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 47.9368
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.1591
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.0533
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.9824
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 46.2978
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.0418
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.0682
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 55.7151
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.0038
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.7582
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.1335
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 47.6793
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.9756
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 60.8638
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.3119
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.0767
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.7688
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 29.141
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 28.3389
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 35.6292
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 37.0507
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.0417
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 29.9431
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.4118
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 34.3125
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 28.8896
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.0618
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 32.7903
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 37.234
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.2437
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.5
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 36.8236
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 35.2285
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.0375
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 29.3243
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.7174
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 32.2069
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 34.2868
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.9549
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 34.9917
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 34.5542
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.0722
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 29.7104
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 32.5431
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.4847
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 34.8257
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 34.0417
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.1417
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 32.2006
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.9212
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 34.6639
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 35.1758
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.337
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 35.9403
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.9182
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.9535
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 28.4602
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.6751
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 28.8285
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 34.91
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.7096
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 28.6766
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.9109
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.329
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 29.6519
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 30.0812
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 29.5684
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.0513
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 36.5246
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 33.589
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 35.8976
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 37.3283
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 37.9025
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 34.2688
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 34.5423
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 31.4207
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 35.934
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.2098
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.9365
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.3196
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 55.0715
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 56.2879
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.6715
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 55.5012
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.8752
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.1804
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.3931
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.515
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.0873
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.3987
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.7477
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.204
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 57.9373
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.8223
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 58.0377
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.1767
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.0477
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.3046
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.6756
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.9648
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.5442
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.449
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.1675
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.016
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 48.7246
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 57.3588
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 49.496
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.2059
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.6999
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.9213
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.0129
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.5838
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.9847
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 56.2894
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 58.5705
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.2757
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.4755
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.9286
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 55.0102
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 47.5366
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.4676
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 47.0788
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.3969
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.0319
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.5217
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.378
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.4869
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 50.1734
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.6544
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.2551
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 51.5287
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.8212
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.7851
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.725
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 53.9335
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 52.3973
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 54.9477

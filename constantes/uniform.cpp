@@ -48,7 +48,8 @@ int main(int argc, char const *argv[])
  	<< "xd: Y dest "<< endl
  	<< "qtd_flits : Quantos flits haverá dentro de cada pacote"<< endl
  	<< "qtd_pcts : Quantos pacotes serão enviados por fluxo"<< endl
- 	<< "idleCycles: De quanto em quanto tempo é enviado" << endl;
+ 	<< "idleCycles: De quanto em quanto tempo é enviado" << endl
+ 	<<endl << "Restrições: Cada fluxo deve ter pelo menos dois flits, um de cabeçalho e um terminador.";
 
  
 	return 0;
