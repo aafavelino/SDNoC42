@@ -11,6 +11,7 @@
 #include "../constantes/constantes.h"
 
 
+
 SC_MODULE (sd) {
 
 
@@ -73,9 +74,20 @@ SC_MODULE (sd) {
 	void remove_rota(tuple<int, int> destino);
 
 
-	bool roteamento_xy(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante);
+	
 
 	void parada();
+
+
+	// Métodos e Funções referêntes ao Algoritmo de Dijikstra
+	int min_distancia(int dist[], bool sptSet[]);
+	int printSolution(int dist[], int n);
+	int tupleToInt(tuple<int, int> tpl);
+	tuple<int, int> intToTuple(int i);
+
+	// Algoritmos de roteamento implementados
+	bool dijkstra(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante);
+	bool roteamento_xy(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante);
 
 
 	SC_CTOR(sd) {

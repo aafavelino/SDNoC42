@@ -3,6 +3,185 @@
 //
 #include "sd.h"
 
+#define V LARGURA_REDE * ALTURA_REDE
+   
+int sd::min_distancia(int dist[], bool sptSet[]) 
+{ 
+   // Initialize min value 
+   int min = INT_MAX, min_index; 
+   
+   for (int v = 0; v < V; v++) 
+     if (sptSet[v] == false && dist[v] <= min) 
+         min = dist[v], min_index = v; 
+   
+   return min_index; 
+} 
+  
+
+int sd::tupleToInt(tuple<int, int> tpl){
+	return (std::get<0>(tpl) * LARGURA_REDE) + std::get<1>(tpl);
+}
+
+tuple<int, int> sd::intToTuple(int i){
+	return std::make_tuple(i / LARGURA_REDE, i % LARGURA_REDE);
+}
+
+bool sd::dijkstra(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante) { 
+    
+
+	for(int i = 0; i < rotas.size(); i++){
+		if(rotas[i][0] == origem){
+			return false;
+		}
+
+		if(rotas[i][rotas[i].size()-1] == destino){
+			return false;
+		}
+	}
+
+	std::vector<tuple<int, int> > rota;
+	int src = tupleToInt(origem);
+	int tgt = tupleToInt(destino);
+    int dist[V];     
+    bool sptSet[V]; 
+    int prev[V];
+    
+    for (int i = 0; i < V; i++) {
+        dist[i] = INT_MAX; 
+        sptSet[i] = false; 
+        prev[i] = -1;  
+    }
+    dist[src] = 0; 
+   
+
+   	for (int count = 0; count < V-1; count++) { 
+       
+       	int u = min_distancia(dist, sptSet); 
+
+       	sptSet[u] = true; 
+       
+       for (int v = 0; v < V; v++) 
+         if (!sptSet[v] && grafo_de_rotas[u][v] && dist[u] != INT_MAX && dist[u]+grafo_de_rotas[u][v] < dist[v]) {
+            	dist[v] = dist[u] + grafo_de_rotas[u][v]; 
+        		prev[v] = u;
+        		
+        		if (v == tgt) {
+	 	 			v = tgt;
+  					if (prev[v] != -1 or v == src) {          
+      				while (v != -1){
+          				rota.push_back(intToTuple(v));
+          				v = prev[v];
+          			}
+          			std::reverse(rota.begin(), rota.end());
+          		}
+      			break;
+   			}
+        }
+     } 
+      
+     if (rota.size() == 0)
+     {
+     	return false;
+     }
+
+
+	for (int i = 0; i < (rota.size()-1); ++i) {
+		if (grafo_de_rotas[((std::get<0>(rota[i])*ALTURA_REDE)+(std::get<1>(rota[i])))][((std::get<0>(rota[i+1])*ALTURA_REDE)+(std::get<1>(rota[i+1])))] != 1) {
+			return false;
+		}
+	}
+
+	if(std::get<0>(rota[1]) > std::get<0>(rota[0])){
+		set_seletor[std::get<0>(rota[0])][std::get<1>(rota[0])][SUL].write(tabela_mux[SUL][LOCAL]);
+		set_enables[std::get<0>(rota[0])][std::get<1>(rota[0])][SUL].write(1);
+	}else if(std::get<0>(rota[1]) < std::get<0>(rota[0])){
+		set_seletor[std::get<0>(rota[0])][std::get<1>(rota[0])][NORTE].write(tabela_mux[NORTE][LOCAL]);
+		set_enables[std::get<0>(rota[0])][std::get<1>(rota[0])][NORTE].write(1);
+	}else if(std::get<1>(rota[1]) > std::get<1>(rota[0])){
+		set_seletor[std::get<0>(rota[0])][std::get<1>(rota[0])][LESTE].write(tabela_mux[LESTE][LOCAL]);
+		set_enables[std::get<0>(rota[0])][std::get<1>(rota[0])][LESTE].write(1);
+	}else if(std::get<1>(rota[1]) < std::get<1>(rota[0])){
+		set_seletor[std::get<0>(rota[0])][std::get<1>(rota[0])][OESTE].write(tabela_mux[OESTE][LOCAL]);
+		set_enables[std::get<0>(rota[0])][std::get<1>(rota[0])][OESTE].write(1);
+	}
+
+	for (int i = 1; i < (rota.size()-1); i++) {
+		grafo_de_rotas[((std::get<0>(rota[i])*ALTURA_REDE)+(std::get<1>(rota[i])))][((std::get<0>(rota[i+1])*ALTURA_REDE)+(std::get<1>(rota[i+1])))] = 0;
+
+		if(std::get<0>(rota[i-1]) < std::get<0>(rota[i])){
+			if(std::get<0>(rota[i+1]) > std::get<0>(rota[i])){
+				set_seletor[std::get<0>(rota[i])][std::get<1>(rota[i])][SUL].write(tabela_mux[SUL][NORTE]);
+				set_enables[std::get<0>(rota[i])][std::get<1>(rota[i])][SUL].write(1);
+			}else if(std::get<1>(rota[i+1]) > std::get<1>(rota[i])){
+				set_seletor[std::get<0>(rota[i])][std::get<1>(rota[i])][LESTE].write(tabela_mux[LESTE][NORTE]);
+				set_enables[std::get<0>(rota[i])][std::get<1>(rota[i])][LESTE].write(1);
+			}else if(std::get<1>(rota[i+1]) < std::get<1>(rota[i])){
+				set_seletor[std::get<0>(rota[i])][std::get<1>(rota[i])][OESTE].write(tabela_mux[OESTE][NORTE]);
+				set_enables[std::get<0>(rota[i])][std::get<1>(rota[i])][OESTE].write(1);
+			}
+		}else if(std::get<0>(rota[i-1]) > std::get<0>(rota[i])){
+			if(std::get<0>(rota[i+1]) < std::get<0>(rota[i])){
+				set_seletor[std::get<0>(rota[i])][std::get<1>(rota[i])][NORTE].write(tabela_mux[NORTE][SUL]);
+				set_enables[std::get<0>(rota[i])][std::get<1>(rota[i])][NORTE].write(1);
+			}else if(std::get<1>(rota[i+1]) > std::get<1>(rota[i])){
+				set_seletor[std::get<0>(rota[i])][std::get<1>(rota[i])][LESTE].write(tabela_mux[LESTE][SUL]);
+				set_enables[std::get<0>(rota[i])][std::get<1>(rota[i])][LESTE].write(1);
+			}else if(std::get<1>(rota[i+1]) < std::get<1>(rota[i])){
+				set_seletor[std::get<0>(rota[i])][std::get<1>(rota[i])][OESTE].write(tabela_mux[OESTE][SUL]);
+				set_enables[std::get<0>(rota[i])][std::get<1>(rota[i])][OESTE].write(1);
+			}
+		}else if(std::get<1>(rota[i-1]) < std::get<1>(rota[i])){
+			if(std::get<0>(rota[i+1]) > std::get<0>(rota[i])){
+				set_seletor[std::get<0>(rota[i])][std::get<1>(rota[i])][SUL].write(tabela_mux[SUL][OESTE]);
+				set_enables[std::get<0>(rota[i])][std::get<1>(rota[i])][SUL].write(1);
+			}else if(std::get<0>(rota[i+1]) < std::get<0>(rota[i])){
+				set_seletor[std::get<0>(rota[i])][std::get<1>(rota[i])][NORTE].write(tabela_mux[NORTE][OESTE]);
+				set_enables[std::get<0>(rota[i])][std::get<1>(rota[i])][NORTE].write(1);
+			}else if(std::get<1>(rota[i+1]) > std::get<1>(rota[i])){
+				set_seletor[std::get<0>(rota[i])][std::get<1>(rota[i])][LESTE].write(tabela_mux[LESTE][OESTE]);
+				set_enables[std::get<0>(rota[i])][std::get<1>(rota[i])][LESTE].write(1);
+			}
+		}else if(std::get<1>(rota[i-1]) > std::get<1>(rota[i])){
+			if(std::get<0>(rota[i+1]) > std::get<0>(rota[i])){
+				set_seletor[std::get<0>(rota[i])][std::get<1>(rota[i])][SUL].write(tabela_mux[SUL][LESTE]);
+				set_enables[std::get<0>(rota[i])][std::get<1>(rota[i])][SUL].write(1);
+			}else if(std::get<0>(rota[i+1]) < std::get<0>(rota[i])){
+				set_seletor[std::get<0>(rota[i])][std::get<1>(rota[i])][NORTE].write(tabela_mux[NORTE][LESTE]);
+				set_enables[std::get<0>(rota[i])][std::get<1>(rota[i])][NORTE].write(1);
+			}else if(std::get<1>(rota[i+1]) < std::get<1>(rota[i])){
+				set_seletor[std::get<0>(rota[i])][std::get<1>(rota[i])][OESTE].write(tabela_mux[OESTE][LESTE]);
+				set_enables[std::get<0>(rota[i])][std::get<1>(rota[i])][OESTE].write(1);
+			}
+		}
+	}
+
+	if(std::get<0>(rota[(rota.size()-2)]) < std::get<0>(rota[(rota.size()-1)])){
+		set_seletor[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(tabela_mux[LOCAL][NORTE]);
+		set_enables[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(1);
+	}else if(std::get<0>(rota[(rota.size()-2)]) > std::get<0>(rota[(rota.size()-1)])){
+		set_seletor[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(tabela_mux[LOCAL][SUL]);
+		set_enables[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(1);
+	}else if(std::get<1>(rota[(rota.size()-2)]) < std::get<1>(rota[(rota.size()-1)])){
+		set_seletor[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(tabela_mux[LOCAL][OESTE]);
+		set_enables[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(1);
+	}else if(std::get<1>(rota[(rota.size()-2)]) > std::get<1>(rota[(rota.size()-1)])){
+		set_seletor[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(tabela_mux[LOCAL][LESTE]);
+		set_enables[std::get<0>(rota[(rota.size()-1)])][std::get<1>(rota[(rota.size()-1)])][LOCAL].write(1);
+	}
+
+	rotas.push_back(rota);
+	solicitacoes_de_rota.pop();
+
+	deque_pacotes[pos_solicitante].front().possui_rota = true;
+	return true;    
+} 
+
+
+
+
+
+
+
 
 void sd::injeta_pacote() {
 	clock++;
@@ -45,7 +224,7 @@ void sd::injeta_pacote() {
 				deque_pacotes[i].pop_front();
 			}
 		}
-	}
+	}	
 }
 
 void sd::parada(){
@@ -61,7 +240,8 @@ void sd::parada(){
 void sd::solicita_rota() {
 	if (!solicitacoes_de_rota.empty())
 	{	
-		roteamento_xy(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());
+		// roteamento_xy(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());
+		dijkstra(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());	
 	}
 }
 
