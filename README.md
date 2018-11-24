@@ -10,14 +10,23 @@ Após a instalação, sete a variável de ambiente SC_SIGNAL_WRITE_CHECK para DI
 ````export SC_SIGNAL_WRITE_CHECK=DISABLE````
 
 ### Compilando a NOC
-Existe um arquivo com um exemplo de como compilar tanto no mac quanto no linux. Em suma é só um exemplo pois pode variar de acordo com o modo de como você instalou o systemc. O arquivo é o ~~**compiler.sh**~~. 
+Existe um arquivo com um exemplo de como compilar tanto no mac quanto no linux. Em suma é só um exemplo pois pode variar de acordo com o modo de como você instalou o systemc. O arquivo é o ~~**compiler.sh**~~.
+
+Em suma lá você poderá encontrar os arquivos.cpp que devem ser compilados... Sugiro que coloque a flag -std=c++11 pois utilizamos algumas funcionalidades desta versão. 
 
 ## Executando uma simulação
 
- 1. Você pode definir o tamanho dos buffers e Algoritmo de Roteamento.
- 2. Em traffic.txt é definido o padrão de tráfego.
+ 1. Você pode definir o Algoritmo de Roteamento (Que por enquanto temos o XY baseado na busca em profundidade DFS e O algoritmo de Dijkstra)
+ 2. Em traffic.txt é definido o padrão de tráfego (Que você pode gerar o tráfego pelo uniform.cpp ou setar manualmente... Ainda não implementamos o gerador de todos os padrões) Você também pode gerar o padrão manualmente pela ferramenta REDSCARF.
  3. Por fim é só executar o arquivo gerado ao compilar a noc. 
 
+ A execução é feita da seguinte forma ````./bin/compilado 1 4 4 ````
+
+ O primeiro argumento é referênte ao sorteio dos fluxos, caso queira sortear sete 1 senão, sete 0. Obs.: Só sorteie se utilizar o padrão uniforme.
+
+ Os outros dois argumentos são referêntes às dimensões da NoC, esse do exemplo é para uma NoC Mesh 4x4.
+
+ Para mais informações entre em contato com Adelino Afonso no email abaixo ou pelo telefone 084 986.348.534.
 
 
 ### Projeto de Pesquisa em Redes em chip
