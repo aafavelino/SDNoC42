@@ -8,15 +8,14 @@
 
 int sd::min_distancia(int dist[], bool conjuntoVis[]) 
 { 
-   // Initialize min value 
-   int valor_min = INT_MAX
+   int valor_min = INT_MAX;
    int menor_indice; 
    
    for (int v = 0; v < V; v++) 
      if (conjuntoVis[v] == false && dist[v] <= valor_min) 
          valor_min = dist[v], menor_indice = v; 
    
-   return min_indice; 
+   return menor_indice; 
 }
   
 
