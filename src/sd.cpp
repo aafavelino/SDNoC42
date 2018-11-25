@@ -5,17 +5,19 @@
 
 #define V LARGURA_REDE * ALTURA_REDE
    
-int sd::min_distancia(int dist[], bool sptSet[]) 
+
+int sd::min_distancia(int dist[], bool conjuntoVis[]) 
 { 
    // Initialize min value 
-   int min = INT_MAX, min_index; 
+   int valor_min = INT_MAX
+   int menor_indice; 
    
    for (int v = 0; v < V; v++) 
-     if (sptSet[v] == false && dist[v] <= min) 
-         min = dist[v], min_index = v; 
+     if (conjuntoVis[v] == false && dist[v] <= valor_min) 
+         valor_min = dist[v], menor_indice = v; 
    
-   return min_index; 
-} 
+   return min_indice; 
+}
   
 
 int sd::tupleToInt(tuple<int, int> tpl){
@@ -43,12 +45,12 @@ bool sd::dijkstra(tuple<int, int> origem, tuple<int, int> destino, int pos_solic
 	int src = tupleToInt(origem);
 	int tgt = tupleToInt(destino);
     int dist[V];     
-    bool sptSet[V]; 
+    bool visitados[V]; 
     int prev[V];
     
     for (int i = 0; i < V; i++) {
         dist[i] = INT_MAX; 
-        sptSet[i] = false; 
+        visitados[i] = false; 
         prev[i] = -1;  
     }
     dist[src] = 0; 
@@ -56,12 +58,12 @@ bool sd::dijkstra(tuple<int, int> origem, tuple<int, int> destino, int pos_solic
 
    	for (int count = 0; count < V-1; count++) { 
        
-       	int u = min_distancia(dist, sptSet); 
+       	int u = min_distancia(dist, visitados); 
 
-       	sptSet[u] = true; 
+       	visitados[u] = true; 
        
        for (int v = 0; v < V; v++) 
-         if (!sptSet[v] && grafo_de_rotas[u][v] && dist[u] != INT_MAX && dist[u]+grafo_de_rotas[u][v] < dist[v]) {
+         if (!visitados[v] && grafo_de_rotas[u][v] && dist[u] != INT_MAX && dist[u]+grafo_de_rotas[u][v] < dist[v]) {
             	dist[v] = dist[u] + grafo_de_rotas[u][v]; 
         		prev[v] = u;
         		

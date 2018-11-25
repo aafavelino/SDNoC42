@@ -80,7 +80,7 @@ SC_MODULE (sd) {
 
 
 	// Métodos e Funções referêntes ao Algoritmo de Dijikstra
-	int min_distancia(int dist[], bool sptSet[]);
+	int min_distancia(int dist[], bool visitados[]);
 	int printSolution(int dist[], int n);
 	int tupleToInt(tuple<int, int> tpl);
 	tuple<int, int> intToTuple(int i);
