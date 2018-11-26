@@ -9,6 +9,7 @@
 #include "noc.h"
 #include "pacote.h"
 #include "../constantes/constantes.h"
+#define V LARGURA_REDE * ALTURA_REDE
 
 
 
@@ -73,6 +74,8 @@ SC_MODULE (sd) {
 
 	void remove_rota(tuple<int, int> destino);
 
+	void close_circuit(std::vector<tuple<int,int>> rota);
+
 
 	
 
@@ -88,7 +91,7 @@ SC_MODULE (sd) {
 	// Algoritmos de roteamento implementados
 	bool dijkstra(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante);
 	bool roteamento_xy(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante);
-
+	bool roteamento_west_first(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante);
 
 	SC_CTOR(sd) {
 		noc42 = new noc("noc_42");
@@ -100,6 +103,8 @@ SC_MODULE (sd) {
 				grafo_de_rotas[i][j] = 0;
 			}
 		}
+
+
 
 		for (int i = 0; i < (ALTURA_REDE*LARGURA_REDE); ++i) {
 			for (int j = i; j < (ALTURA_REDE*LARGURA_REDE); ++j) {
@@ -123,8 +128,6 @@ SC_MODULE (sd) {
 				}
 			}
 		}
-
-
 
 
 		// Bind sinais entre os mux dos roteadores	

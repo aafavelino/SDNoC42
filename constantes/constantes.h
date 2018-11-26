@@ -5,8 +5,8 @@
 #define LOCAL 4
 
 // Dimensões da Rede
-#define ALTURA_REDE 10
-#define LARGURA_REDE 10
+#define ALTURA_REDE 4
+#define LARGURA_REDE 4
 
 
 // Flit terminador
