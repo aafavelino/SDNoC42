@@ -1,0 +1,31 @@
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+injetou 1 em [0][0]
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Tamanho 4
+Não TEM ROTA
+Trailer
+injetou 4000000000 em [0][0]
+POP
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+Tamanho 4
+Não TEM ROTA
+remove_rota
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 4000000000 0 
+injetou 1 em [1][0]
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Trailer
+injetou 4000000001 em [1][0]
+POP
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+remove_rota
+0 0 0 0 0 0 0 0 0 0 4000000001 0 0 0 0 0 
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Latência média da simulação 3.5
