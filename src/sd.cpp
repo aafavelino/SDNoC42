@@ -40,7 +40,9 @@ void sd::injeta_pacote() {
 			deque_pacotes[i].front().solicitou_rota = true;
 			solicitacoes_de_rota.push(i);
 			deque_pacotes[i].front().contador_idleCycles = 0;
+			// cout <<"Aqui" << endl;
 			deque_clock_inicial[i].push_back(clock);
+			// cout <<"Aqui 2" << endl;
 		} 
 		if(!deque_pacotes[i].empty() and (deque_pacotes[i].front().possui_rota == true)) {
 			
@@ -54,7 +56,9 @@ void sd::injeta_pacote() {
 						tamanho_de_rota =  rotas[j].size();
 					}
 				}
+				// cout <<"Aqui 3" << endl;
 				deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)] = (clock+tamanho_de_rota+deque_pacotes[i].front().qtd_flits-1)-deque_clock_inicial[i][(deque_clock_inicial[i].size()-1)];
+				// cout <<"Aqui 4" << endl;
 			}
 
 			// Caso seja o último flit deve-se tirar a flag que diz que possui uma rota			
@@ -85,8 +89,8 @@ void sd::parada(){
 void sd::solicita_rota() {
 	if (!solicitacoes_de_rota.empty())
 	{	
-		roteamento_xy(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());
-		// dijkstra(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());	
+		// roteamento_xy(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());
+		dijkstra(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());	
 		// roteamento_west_first(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());
 	}
 }
@@ -264,8 +268,7 @@ void sd::verifica_trailer() {
 				sc_uint<32> id_pacote = noc42->network[i][j]->mux_local->saida;
 				deque_clock_final[(id_pacote - trailer)].push_back(clock);
 				remove_rota(std::make_tuple(i,j));
-				noc42->network[i][j]->mux_local->saida.write(0);
-				
+				noc42->network[i][j]->mux_local->saida.write(0);				
 			}
 		}
 	}
