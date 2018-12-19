@@ -18,7 +18,9 @@ using namespace std;
 
 
 std::function<int (int, int)> func = [](int i, int j) {
-    return rand() % i + j;
+    // 25 + ( std::rand() % ( 63 - 25 + 1 ) )
+    return j + (rand() % (i - j + 1));
+    // return ((rand() % i));
 };
 
 int sc_main (int argc, char* argv[]) {
@@ -45,7 +47,7 @@ int sc_main (int argc, char* argv[]) {
     }
 
     int qtd_de_roteadores = ALTURA_REDE * LARGURA_REDE;
-    int qtd_de_fluxos = 240;
+    int qtd_de_fluxos = (ALTURA_REDE * LARGURA_REDE)*((ALTURA_REDE * LARGURA_REDE)-1);
     std::vector<int> roteadores;
 
     // Leitura do Arquivo de tráfego
@@ -56,7 +58,7 @@ int sc_main (int argc, char* argv[]) {
     padrao_tfg = (double**)malloc(qtd_de_fluxos * sizeof(double*));
 
     for (int i = 0; i < qtd_de_fluxos; i++) 
-    padrao_tfg[i] = (double*) malloc(15 * sizeof(double));
+        padrao_tfg[i] = (double*) malloc(15 * sizeof(double));
 
 
 
@@ -82,17 +84,26 @@ int sc_main (int argc, char* argv[]) {
      * caso queira fazer o sorteio sete o primeiro argumento para
      * 1 e os respectivos argumentos serão a largura e altura da NoC.
      */
+
+
     if (atoi(argv[1]) == 1) {
-        int fluxos = atoi(argv[2]) * atoi(argv[3]);
-        int value = fluxos-1;
-        int topo = value;
-        for (int i = 0; i < fluxos; ++i) {
-            for (int j = i*value; j < topo; ++j) {
-                swap(padrao_tfg[j],padrao_tfg[(j + (rand() % (int)((topo-1) - j + 1)))]);
+        int indice = 0;
+        int fixo = 0;
+        for (int i = 0; i < qtd_de_roteadores; ++i) {
+
+            fixo = indice+roteadores[i];
+            for (int j = 0; j < roteadores[i]; ++j)
+            {
+                cout << "Indice: " << indice << "  Swap: " << func(fixo-1,indice)  << " Fixo: "<< fixo-1<< endl;
+                swap(padrao_tfg[indice], padrao_tfg[func(fixo-1,indice)]);
+                indice++;
             }
-            topo += value;
+
         }
+
     }
+
+
 
     int foda = 0;
     int x_ant = std::get<0>(map_roteadores[0]);
