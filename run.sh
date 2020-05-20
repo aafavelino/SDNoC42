@@ -1,8 +1,8 @@
 cd constantes/
-./uniform 10 100 8 10
+./uniform 2 2 3 4
 cd ../
 for (( j = 0; j < 30; j++ )); do
-	./bin/exe 1 10 10 
+	./bin/exe 1 4 4 
 	sleep 1
 done
 
