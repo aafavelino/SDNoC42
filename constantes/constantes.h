@@ -21,5 +21,4 @@
 // 0 ZY
 // 1 djikstra
 // 2 west first
-
 #define TIPO_ROTEAMENTO 0
