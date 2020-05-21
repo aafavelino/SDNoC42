@@ -21,6 +21,8 @@ std::function<int (int, int)> func = [](int i, int j) {
   return rand() % i + j;
 };
 
+
+
 int sc_main (int argc, char* argv[]) {
 
   std::srand (unsigned(std::time(0)));
@@ -132,3 +134,5 @@ int sc_main (int argc, char* argv[]) {
 
   	return 0;
 }
+
+

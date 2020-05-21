@@ -11,3 +11,15 @@
 
 // Flit terminador
 #define TRAILER 4000000000
+
+
+// Quantidade de núcleos mestres
+#define NUCLEOS 3
+
+
+// Tipo de roteamento 
+// 0 ZY
+// 1 djikstra
+// 2 west first
+
+#define TIPO_ROTEAMENTO 0

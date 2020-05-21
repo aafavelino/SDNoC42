@@ -83,12 +83,23 @@ void sd::parada(){
 }
 
 void sd::solicita_rota() {
-	if (!solicitacoes_de_rota.empty())
-	{	
-		roteamento_xy(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());
-		// dijkstra(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());	
-		// roteamento_west_first(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());
-	}
+for (int i = 0; i < NUCLEOS; ++i)
+	{
+		if (!solicitacoes_de_rota.empty())
+		{	
+			switch(TIPO_ROTEAMENTO) {
+				case 0:
+					roteamento_xy(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());
+				break;
+				case 1: 
+					dijkstra(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());	
+					break;
+				case 2:
+					roteamento_west_first(deque_pacotes[solicitacoes_de_rota.front()].front().origem,deque_pacotes[solicitacoes_de_rota.front()].front().destino,solicitacoes_de_rota.front());
+				break;
+			}	
+		}		
+	}	
 }
 
 

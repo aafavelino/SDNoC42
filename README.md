@@ -33,9 +33,9 @@ Em suma lá você poderá encontrar os arquivos.cpp que devem ser compilados... 
 
 |  Alunos                       | 		Email			  |			 			Curso				  |
 |-------------------------------|-------------------------|-------------------------------------------|
-| Adelino Avelino			    | aafavelino@icloud.com   | Tecnologia da Informação BTI-UFRN		  |
+| Adelino Avelino			    | aafavelino@icloud.com   | Mestrado Sistemas e Computação PPGSC-UFRN |
 | Raul Silveira 				| raul95@gmail.com        | Mestrado Sistemas e Computação PPGSC-UFRN |
-| Yuri Reinaldo 				| yuri.wrlk@gmail.com     | Tecnologia da Informação BTI-UFRN		  |
+
 
 
 
