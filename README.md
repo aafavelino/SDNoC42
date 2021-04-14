@@ -34,15 +34,14 @@ Em suma lá você poderá encontrar os arquivos.cpp que devem ser compilados... 
 |  Alunos                       | 		Email			  |			 			Curso				  |
 |-------------------------------|-------------------------|-------------------------------------------|
 | Adelino Avelino			    | aafavelino@icloud.com   | Mestrado Sistemas e Computação PPGSC-UFRN |
-| Raul Silveira 				| raul95@gmail.com        | Mestrado Sistemas e Computação PPGSC-UFRN |
+| Kaio Henrique 				| 	kaioh95@gmail.com        | Bacharelado em Tecnologia da Informação-UFRN |
 
 
 
 
-|  Professores                  |             	Email				|
+|  Professor                  |             	Email				|
 |-------------------------------|-----------------------------------|
 |  Marcio Eduardo Kreutz		|  kreutz@dimap.ufrn.br             |
-|  Silvia Maria Diniz M. Maia	|  silvia@dimap.ufrn.br 			|
 |  Departamento 				|  DIMAp - UFRN 					|
 
 
