@@ -1,0 +1,1 @@
+g++ constantes/uniform.cpp -o uniform

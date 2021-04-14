@@ -2,7 +2,7 @@
 // Created by Adelino, Raul and Yuri on 11/11/18.
 //
 #include "sd.h"
-
+#include <stack>
 
 bool sd::dijkstra(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante) { 
     
@@ -120,11 +120,9 @@ bool sd::roteamento_xy(tuple<int, int> origem, tuple<int, int> destino, int pos_
 
 
 	for (int i = 0; i < (rota.size()-1); ++i) {
-
 		if (grafo_de_rotas[((std::get<0>(rota[i])*ALTURA_REDE)+(std::get<1>(rota[i])))][((std::get<0>(rota[i+1])*ALTURA_REDE)+(std::get<1>(rota[i+1])))] != 1) {
 			return false;
 		}
-		
 	}
 
 	close_circuit(rota);
@@ -192,3 +190,84 @@ bool sd::roteamento_west_first(tuple<int, int> origem, tuple<int, int> destino, 
 	deque_pacotes[pos_solicitante].front().possui_rota = true;
 	return true;
 }
+
+
+bool sd::dfs (tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante) {
+
+	for(int i = 0; i < rotas.size(); i++){
+		if(rotas[i][0] == origem){
+			return false;
+		}
+
+		if(rotas[i][rotas[i].size()-1] == destino){
+			return false;
+		}
+	}
+
+	std::vector<tuple<int, int> > rota;
+	int src = tupleToInt(origem);
+	int tgt = tupleToInt(destino);
+    bool visitados[V]; 
+    int prev[V];
+    std::stack<int> st;
+    
+    for (int i = 0; i < V; i++) {
+        visitados[i] = false; 
+        prev[i] = -1;  
+    }
+
+    st.push(src); 
+
+  	while(!st.empty()){
+  		int u = st.top();
+  		st.pop();
+
+  		if(!visitados[u]){
+  			visitados[u] = true;
+
+  			for (int v = 0; v < V; v++){
+  				if (!visitados[v] && grafo_de_rotas[u][v]){
+  					st.push(v);
+  					prev[v] = u;
+
+  					if (v == tgt) {
+	 	 				v = tgt;
+  						if (prev[v] != -1 or v == src) {          
+      						while (v != -1){
+          						rota.push_back(intToTuple(v));
+          						v = prev[v];
+          					}
+          					std::reverse(rota.begin(), rota.end());
+          				}
+          				break;
+          			}
+          		}
+  			}
+  		}
+
+  	}
+
+  	if (rota.size() == 0){
+    	return false;
+    }
+
+	for (int i = 0; i < (rota.size()-1); ++i) {
+		if (grafo_de_rotas[((std::get<0>(rota[i])*ALTURA_REDE)+(std::get<1>(rota[i])))][((std::get<0>(rota[i+1])*ALTURA_REDE)+(std::get<1>(rota[i+1])))] != 1) {
+			return false;
+		}
+	}
+
+	close_circuit(rota);
+	rotas.push_back(rota);
+	solicitacoes_de_rota.pop();
+	deque_pacotes[pos_solicitante].front().possui_rota = true;
+	return true;
+}
+
+
+
+
+
+
+
+

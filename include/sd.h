@@ -92,6 +92,9 @@ SC_MODULE (sd) {
 	bool dijkstra(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante);
 	bool roteamento_xy(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante);
 	bool roteamento_west_first(tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante);
+	bool dfs (tuple<int, int> origem, tuple<int, int> destino, int pos_solicitante);
+
+
 
 	SC_CTOR(sd) {
 		noc42 = new noc("noc_42");

@@ -60,7 +60,6 @@ public:
 				// Caso seja o flit trailer, escreve 0;
 				if(j == (qtd_flits-1)) {
 					this->flit.data = TRAILER+id;
-					// cout << "Data "<<this->flit.data << endl;
 				}
 				fila_flits.push(flit);
 			}

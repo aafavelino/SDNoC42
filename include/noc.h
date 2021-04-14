@@ -92,35 +92,67 @@ SC_MODULE (noc) {
 
 			}
 		}
-
-		for (int x = 0; x < ALTURA_REDE; ++x)
+		
+		switch(TOPOLOGIA)
 		{
-			for (int y = 0; y < LARGURA_REDE; ++y)
-			{
-				if (x == 0)
-				{	
-					network[x][y]->buffer_norte->data(canais_de_comunicacao_TERRA[contador_canais_TERRA]);
-					contador_canais_TERRA++;
-				}
-				if (y == 0)
-				{	
-					network[x][y]->buffer_oeste->data(canais_de_comunicacao_TERRA[contador_canais_TERRA]);
-					contador_canais_TERRA++;
-				}
-				if (x == ALTURA_REDE-1)
-				{	
-					network[x][y]->buffer_sul->data(canais_de_comunicacao_TERRA[contador_canais_TERRA]);
-					contador_canais_TERRA++;
-				}
-				if (y == LARGURA_REDE-1)
-				{	
-					network[x][y]->buffer_leste->data(canais_de_comunicacao_TERRA[contador_canais_TERRA]);					
-					contador_canais_TERRA++;
-				}
+			case 0:
+				for (int x = 0; x < ALTURA_REDE; ++x)
+				{
+					for (int y = 0; y < LARGURA_REDE; ++y)
+					{
+						if (x == 0)
+						{	
+							network[x][y]->buffer_norte->data(canais_de_comunicacao_TERRA[contador_canais_TERRA]);
+							contador_canais_TERRA++;
+						}
+						if (y == 0)
+						{	
+							network[x][y]->buffer_oeste->data(canais_de_comunicacao_TERRA[contador_canais_TERRA]);
+							contador_canais_TERRA++;
+						}
+						if (x == ALTURA_REDE-1)
+						{	
+							network[x][y]->buffer_sul->data(canais_de_comunicacao_TERRA[contador_canais_TERRA]);
+							contador_canais_TERRA++;
+						}
+						if (y == LARGURA_REDE-1)
+						{	
+							network[x][y]->buffer_leste->data(canais_de_comunicacao_TERRA[contador_canais_TERRA]);					
+							contador_canais_TERRA++;
+						}
 
-			}
-		}		
+					}
+				}
+			break;
+
+			case 1:
+				for (int x = 0; x < ALTURA_REDE; ++x)
+				{
+					for (int y = 0; y < LARGURA_REDE; ++y)
+					{
+						if (x == 0)
+						{	
+							network[x][y]->buffer_norte->data(network[ALTURA_REDE-1][y]->sinal_mux_out_sul);
+						}
+						if (y == 0)
+						{	
+							network[x][y]->buffer_oeste->data(network[x][LARGURA_REDE-1]->sinal_mux_out_leste);
+						}
+						if (x == ALTURA_REDE-1)
+						{	
+							network[x][y]->buffer_sul->data(network[0][y]->sinal_mux_out_norte);
+						}
+						if (y == LARGURA_REDE-1)
+						{	
+							network[x][y]->buffer_leste->data(network[x][0]->sinal_mux_out_oeste);					
+						}
+
+					}
+				}
+			break;
+		}
 	}
+	
 };
 
 #endif
